@@ -30,3 +30,5 @@ PATH="$PATH:/opt/local/bin:/opt/local/sbin"
 [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 
 export PATH
+
+export CDPATH=":$HOME:$HOME/Google\ Drive"
