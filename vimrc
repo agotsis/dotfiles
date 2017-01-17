@@ -36,7 +36,9 @@ set nostartofline "Vertical movement preserves horizontal position
 "set number "show line numbers
 
 "mouse options"
-set mouse=a
+if has('mouse')
+   set mouse=a
+endif
 map <ScrollWheelUp> <C-Y>
 map <ScrollWheelDown> <C-E>
 
