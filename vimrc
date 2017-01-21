@@ -1,10 +1,9 @@
-set nocompatible  "Kill vi-compatibility
-set t_Co=256 "256 color
+"set t_Co=256 "256 color
 set encoding=utf-8 "UTF-8 character encoding
 
 set number "Show line numbers
 set cursorline "Highlight current line
-set colorcolumn=81 "Highlight column #81
+set textwidth=80 "dont go over!
 
 " Indent 3 spaces
 set tabstop=4  "3 space tabs
@@ -19,7 +18,8 @@ set ruler  "Show bottom ruler
 
 set equalalways  "Split windows equal size
 
-set formatoptions+=croq  "Enable comment line auto formatting
+set formatoptions=cro  "Enable comment line auto formattig croql
+set comments=sl:/*,mb:*,elx:*/
 set wildignore+=*.o,*.obj,*.class,*.swp,*.pyc "Ignore junk files
 set title  "Set window title to file
 set hlsearch  "Highlight on search
@@ -62,7 +62,7 @@ command Q q
 set paste
 
 " Strip whitespace from end of lines when writing file
-autocmd BufWritePre * :%s/\s\+$//e
+"autocmd BufWritePre * :%s/\s\+$//e
 
 " check for lines that are too long!
 au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
