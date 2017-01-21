@@ -2,10 +2,14 @@ set nocompatible  "Kill vi-compatibility
 set t_Co=256 "256 color
 set encoding=utf-8 "UTF-8 character encoding
 
+set number "Show line numbers
+set cursorline "Highlight current line
+set colorcolumn=81 "Highlight column #81
+
 " Indent 3 spaces
-set tabstop=3  "3 space tabs
-set shiftwidth=3  "3 space shift
-set softtabstop=3  "Tab spaces in no hard tab mode
+set tabstop=4  "3 space tabs
+set shiftwidth=4  "3 space shift
+set softtabstop=4  "Tab spaces in no hard tab mode
 set expandtab  "Expand tabs into spaces
 set autoindent  "autoindent on new lines
 
@@ -15,8 +19,10 @@ set ruler  "Show bottom ruler
 
 set equalalways  "Split windows equal size
 
-set formatoptions=croq  "Enable comment line auto formatting
-
+set formatoptions+=croq  "Enable comment line auto formatting
+set wildignore+=*.o,*.obj,*.class,*.swp,*.pyc "Ignore junk files
+set title  "Set window title to file
+set hlsearch  "Highlight on search
 set title  "Set window title to file
 set hlsearch  "Highlight on search
 set ignorecase  "Search ignoring case
@@ -42,10 +48,24 @@ endif
 map <ScrollWheelUp> <C-Y>
 map <ScrollWheelDown> <C-E>
 
+let mapleader = "\<Space>"
+nnoremap <Leader>w :w<CR>
+nnoremap <Leader>q :q<CR>
+nmap <Leader><Leader> V
+
+" Get rid of warning on save/exit typo
+command WQ wq
+command Wq wq
+command W w
+command Q q
+
 set paste
 
 " Strip whitespace from end of lines when writing file
 autocmd BufWritePre * :%s/\s\+$//e
+
+" check for lines that are too long!
+au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 
 "colorscheme
 colorscheme monokai
