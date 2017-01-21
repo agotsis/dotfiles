@@ -53,3 +53,7 @@ colorscheme monokai
 " Syntax highlighting and stuff
 syntax on
 filetype plugin indent on
+
+call plug#begin('~/.vim/plugged')
+Plug 'scrooloose/nerdcommenter'
+call plug#end()
