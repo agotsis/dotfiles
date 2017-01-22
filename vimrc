@@ -51,6 +51,7 @@ map <ScrollWheelDown> <C-E>
 let mapleader = "\<Space>"
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
+nnoremap <Leader>e :wq<CR>
 nmap <Leader><Leader> V
 
 " Get rid of warning on save/exit typo
