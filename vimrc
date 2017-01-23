@@ -19,7 +19,7 @@ set ruler  "Show bottom ruler
 
 set equalalways  "Split windows equal size
 
-set formatoptions=cro  "Enable comment line auto formatting croql
+set formatoptions=croq  "Enable comment line auto formatting
 set comments=sl:/*,mb:*,elx:*/
 set wildignore+=*.o,*.obj,*.class,*.swp,*.pyc "Ignore junk files
 set title  "Set window title to file
@@ -31,7 +31,6 @@ set smartcase  "Search using smartcase
 set incsearch  "Start searching immediately
 set showcmd
 set incsearch
-
 set scrolloff=5  "Never scroll off
 set wildmode=longest,list  "Better unix-like tab completion
 set clipboard=unnamed  "Copy and paste from system clipboard
@@ -69,7 +68,7 @@ autocmd BufWritePre * :%s/\s\+$//e
 au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 
 "colorscheme
-colorscheme monokai
+colorscheme molokai
 
 " Syntax highlighting and stuff
 syntax on
