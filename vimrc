@@ -1,4 +1,5 @@
-"set t_Co=256 "256 color
+set nocompatible
+set t_Co=256 "256 color
 set encoding=utf-8 "UTF-8 character encoding
 
 set number "Show line numbers
@@ -6,8 +7,8 @@ set cursorline "Highlight current line
 set textwidth=80 "dont go over!
 
 " Indent 3 spaces
-set tabstop=4  "3 space tabs
-set shiftwidth=4  "3 space shift
+set tabstop=4  "4 space tabs
+set shiftwidth=4  "4 space shift
 set softtabstop=4  "Tab spaces in no hard tab mode
 set expandtab  "Expand tabs into spaces
 set autoindent  "autoindent on new lines
@@ -28,6 +29,8 @@ set hlsearch  "Highlight on search
 set ignorecase  "Search ignoring case
 set smartcase  "Search using smartcase
 set incsearch  "Start searching immediately
+set showcmd
+set incsearch
 
 set scrolloff=5  "Never scroll off
 set wildmode=longest,list  "Better unix-like tab completion
@@ -67,6 +70,7 @@ set paste
 
 " check for lines that are too long!
 au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+:autocmd BufReadPost * :DetectIndent 
 
 "colorscheme
 colorscheme monokai
@@ -78,4 +82,10 @@ filetype plugin indent on
 " https://github.com/junegunn/vim-plug
 call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdcommenter'
+Plug 'https://github.com/ciaranm/detectindent.git'
+Plug 'https://github.com/vim-syntastic/syntastic.git'
+Plug 'https://github.com/vim-scripts/a.vim.git'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+Plug 'Raimondi/delimitMate'
 call plug#end()
