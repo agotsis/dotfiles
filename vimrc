@@ -6,7 +6,7 @@ set number "Show line numbers
 set cursorline "Highlight current line
 set textwidth=80 "dont go over!
 
-" Indent 3 spaces
+" Indent 4 spaces
 set tabstop=4  "4 space tabs
 set shiftwidth=4  "4 space shift
 set softtabstop=4  "Tab spaces in no hard tab mode
@@ -19,7 +19,7 @@ set ruler  "Show bottom ruler
 
 set equalalways  "Split windows equal size
 
-set formatoptions=cro  "Enable comment line auto formattig croql
+set formatoptions=cro  "Enable comment line auto formatting croql
 set comments=sl:/*,mb:*,elx:*/
 set wildignore+=*.o,*.obj,*.class,*.swp,*.pyc "Ignore junk files
 set title  "Set window title to file
@@ -42,7 +42,6 @@ set backspace=indent,eol,start  "Better backspacing
 set linebreak  "Intelligently wrap long files
 set ttyfast  "Speed up vim
 set nostartofline "Vertical movement preserves horizontal position
-"set number "show line numbers
 
 "mouse options"
 if has('mouse')
@@ -63,14 +62,11 @@ command Wq wq
 command W w
 command Q q
 
-set paste
-
 " Strip whitespace from end of lines when writing file
-"autocmd BufWritePre * :%s/\s\+$//e
+autocmd BufWritePre * :%s/\s\+$//e
 
 " check for lines that are too long!
 au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
-:autocmd BufReadPost * :DetectIndent 
 
 "colorscheme
 colorscheme monokai
@@ -82,7 +78,6 @@ filetype plugin indent on
 " https://github.com/junegunn/vim-plug
 call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdcommenter'
-Plug 'https://github.com/ciaranm/detectindent.git'
 Plug 'https://github.com/vim-syntastic/syntastic.git'
 Plug 'https://github.com/vim-scripts/a.vim.git'
 Plug 'airblade/vim-gitgutter'
