@@ -53,6 +53,7 @@ let mapleader = "\<Space>"
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>e :wq<CR>
+nnoremap <Leader>= ggVG=
 nmap <Leader><Leader> V
 
 " Get rid of warning on save/exit typo
@@ -60,6 +61,8 @@ command WQ wq
 command Wq wq
 command W w
 command Q q
+
+set pastetoggle=<F3>
 
 " Strip whitespace from end of lines when writing file
 autocmd BufWritePre * :%s/\s\+$//e
