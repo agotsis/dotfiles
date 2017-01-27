@@ -80,14 +80,9 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-# Example aliases
-alias coin='rlwrap coin'
-
-# for c0
-export PATH=$PATH:/opt/cc0/bin
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-if [ -f $HOME/.zshrclcl ]; then
-    source $HOME/.zshrclcl
+if [ -f $HOME/.zshlcl ]; then
+    source $HOME/.zshlcl
 fi
