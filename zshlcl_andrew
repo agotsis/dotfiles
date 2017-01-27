@@ -1,0 +1,5 @@
+alias coin='rlwrap coin'
+
+alias valgrind-leak='valgrind --leak-check=full'
+
+export CDPATH=":$HOME/private/:$HOME/private/213/"
