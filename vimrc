@@ -85,4 +85,5 @@ Plug 'https://github.com/vim-scripts/a.vim.git'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'Raimondi/delimitMate'
+Plug 'jiangmiao/auto-pairs'
 call plug#end()
