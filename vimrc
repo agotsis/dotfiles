@@ -86,4 +86,5 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'Raimondi/delimitMate'
 Plug 'jiangmiao/auto-pairs'
+Plug 'tomasr/molokai'
 call plug#end()
