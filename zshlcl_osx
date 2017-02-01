@@ -1,3 +1,5 @@
 alias coin='rlwrap coin'
 
+export CDPATH=":$HOME:$HOME/Google Drive/S17/"
+
 fortune | cowsay
