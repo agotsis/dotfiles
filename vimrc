@@ -49,12 +49,12 @@ endif
 map <ScrollWheelUp> <C-Y>
 map <ScrollWheelDown> <C-E>
 
-let mapleader = "\<Space>"
-nnoremap <Leader>w :w<CR>
-nnoremap <Leader>q :q<CR>
-nnoremap <Leader>e :wq<CR>
-nnoremap <Leader>= ggVG=
-nmap <Leader><Leader> V
+let mapleader = ","
+nnoremap <Space>w :w<CR>
+nnoremap <Space>q :q<CR>
+nnoremap <Space>e :wq<CR>
+nnoremap <Space>= ggVG=
+nmap <Space><Space> V
 
 " Get rid of warning on save/exit typo
 command WQ wq
