@@ -80,11 +80,11 @@ filetype plugin indent on
 " https://github.com/junegunn/vim-plug
 call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdcommenter'
-Plug 'https://github.com/vim-syntastic/syntastic.git'
 Plug 'https://github.com/vim-scripts/a.vim.git'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'Raimondi/delimitMate'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tomasr/molokai'
+Plug 'vim-syntastic/syntastic'
 call plug#end()
