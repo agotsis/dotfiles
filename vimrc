@@ -6,10 +6,10 @@ set number "Show line numbers
 set cursorline "Highlight current line
 set textwidth=80 "dont go over!
 
-" Indent 4 spaces
-set tabstop=4  "4 space tabs
-set shiftwidth=4  "4 space shift
-set softtabstop=4  "Tab spaces in no hard tab mode
+" Indent 2 spaces
+set tabstop=2  "2 space tabs
+set shiftwidth=2  "2 space shift
+set softtabstop=2  "Tab spaces in no hard tab mode
 set expandtab  "Expand tabs into spaces
 set autoindent  "autoindent on new lines
 
@@ -49,7 +49,7 @@ endif
 map <ScrollWheelUp> <C-Y>
 map <ScrollWheelDown> <C-E>
 
-let mapleader = ","
+let mapleader = "\\"
 nnoremap <Space>w :w<CR>
 nnoremap <Space>q :q<CR>
 nnoremap <Space>e :wq<CR>
@@ -92,4 +92,5 @@ Plug 'Raimondi/delimitMate'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tomasr/molokai'
 Plug 'vim-syntastic/syntastic'
+Plug 'ervandew/supertab'
 call plug#end()
