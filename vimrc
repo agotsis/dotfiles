@@ -41,6 +41,7 @@ set backspace=indent,eol,start  "Better backspacing
 set linebreak  "Intelligently wrap long files
 set ttyfast  "Speed up vim
 set nostartofline "Vertical movement preserves horizontal position
+set virtualedit=block "allow virtual block editing
 
 "mouse options"
 if has('mouse')
@@ -66,6 +67,10 @@ set pastetoggle=<F3>
 
 " Strip whitespace from end of lines when writing file
 autocmd BufWritePre * :%s/\s\+$//e
+autocmd FileType gitcommit setlocal spell "turn on spellchecking for commits
+
+imap <c-f> <c-g>u<Esc>[s1z=`]a<c-g>u
+nmap <c-f> [s1z=<c-o>]`]
 
 " check for lines that are too long!
 au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
