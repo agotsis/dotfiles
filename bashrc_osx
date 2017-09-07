@@ -23,6 +23,9 @@ PATH="$PATH:/usr/local/bin"
 # for c0
 PATH="$PATH:/opt/cc0/bin"
 
+# for gccarm tools
+PATH=$PATH:~/gcc-arm-none-eabi/bin
+
 # MacPorts Installer addition on 2016-04-01_at_20:41:49: adding an appropriate PATH variable for use with MacPorts.
 PATH="$PATH:/opt/local/bin:/opt/local/sbin"
 
