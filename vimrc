@@ -75,6 +75,11 @@ nmap <c-f> [s1z=<c-o>]`]
 " check for lines that are too long!
 au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 
+" tell it to use an undo file
+set undofile
+" set a directory to store the undo history
+set undodir=$home/.vim/.vimundo/
+
 "colorscheme
 colorscheme molokai
 
