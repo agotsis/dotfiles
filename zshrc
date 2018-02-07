@@ -27,9 +27,6 @@ plugins=(git gitfast git-extras sudo)
 
 source $ZSH/oh-my-zsh.sh
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && \
-          source "${HOME}/.iterm2_shell_integration.zsh"
-
 # Local configuration
 if [ -f $HOME/.zshlcl ]; then
     source $HOME/.zshlcl
