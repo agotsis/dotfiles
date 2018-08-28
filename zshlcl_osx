@@ -1,3 +1,5 @@
 export CDPATH=":$HOME:$HOME/Google Drive/S18/"
 
+alias ssh341="ssh -Y -C ece028.campus.ece.cmu.local"
+
 fortune | cowsay
