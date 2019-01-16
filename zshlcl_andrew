@@ -2,8 +2,12 @@ alias coin='rlwrap coin'
 
 alias valgrind-leak='valgrind --leak-check=full'
 
-export CDPATH=":$HOME/private/:$HOME/private/410/"
-export PATH="$PATH:/afs/cs.cmu.edu/academic/class/15410-s18/bin"
+alias s46='simics46'
+
+export CDPATH=":$HOME/private/:$HOME/private/150"
+export PATH="/afs/andrew/course/15/150/bin:$PATH"
+# 15-410
+# export PATH="$PATH:/afs/cs.cmu.edu/academic/class/15410-s18/bin"
 
 # get cross realm authentication ticket
 aklog cs.cmu.edu
