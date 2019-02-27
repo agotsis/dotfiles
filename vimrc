@@ -107,5 +107,5 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tomasr/molokai'
 Plug 'vim-syntastic/syntastic'
 Plug 'ervandew/supertab'
-Plug 'nachumk/systemverilog.vim'
+Plug 'vhda/verilog_systemverilog.vim'
 call plug#end()

@@ -1,5 +1,7 @@
-export CDPATH=":$HOME:$HOME/Google Drive/S18/"
+export CDPATH=":$HOME:$HOME/Google Drive/S19/"
 
 alias ssh341="ssh -Y -C ece028.campus.ece.cmu.local"
+alias gpom="git push origin master"
+alias glom="git pull origin master"
 
 fortune | cowsay
