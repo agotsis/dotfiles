@@ -4,7 +4,8 @@ set encoding=utf-8 "UTF-8 character encoding
 
 set number "Show line numbers
 set cursorline "Highlight current line
-set textwidth=80 "dont go over!
+"set textwidth=80 "dont go over!
+set textwidth=120 "dont go over!
 
 " Indent 2 spaces
 set tabstop=2  "2 space tabs
@@ -43,7 +44,7 @@ set ttyfast  "Speed up vim
 set nostartofline "Vertical movement preserves horizontal position
 set virtualedit=block "allow virtual block editing
 
-"mouse options"
+" mouse options
 if has('mouse')
    set mouse=a
 endif
@@ -56,6 +57,9 @@ nnoremap <Space>q :q<CR>
 nnoremap <Space>e :wq<CR>
 nnoremap <Space>= ggVG=
 nmap <Space><Space> V
+
+noremap ; l
+noremap l h
 
 " Get rid of warning on save/exit typo
 command WQ wq
@@ -73,7 +77,7 @@ imap <c-f> <c-g>u<Esc>[s1z=`]a<c-g>u
 nmap <c-f> [s1z=<c-o>]`]
 
 " check for lines that are too long!
-au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+" au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 
 " tell it to use an undo file
 set undofile
