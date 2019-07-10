@@ -58,8 +58,11 @@ nnoremap <Space>e :wq<CR>
 nnoremap <Space>= ggVG=
 nmap <Space><Space> V
 
-noremap ; l
-noremap l h
+noremap q <c-v>
+
+" swapping the arrow keys, probably bad
+" noremap ; l
+" noremap l h
 
 " Get rid of warning on save/exit typo
 command WQ wq
