@@ -44,6 +44,10 @@ set ttyfast  "Speed up vim
 set nostartofline "Vertical movement preserves horizontal position
 set virtualedit=block "allow virtual block editing
 
+" highlight trailing whitespace
+highlight ExtraWhitespace ctermbg=red guibg=red
+  match ExtraWhitespace /\s\+$/
+
 " mouse options
 if has('mouse')
    set mouse=a
@@ -58,6 +62,7 @@ nnoremap <Space>e :wq<CR>
 nnoremap <Space>= ggVG=
 nmap <Space><Space> V
 
+" Block editing, does not conflict with paste
 noremap q <c-v>
 
 " swapping the arrow keys, probably bad
@@ -85,7 +90,7 @@ nmap <c-f> [s1z=<c-o>]`]
 " tell it to use an undo file
 set undofile
 " set a directory to store the undo history
-set undodir=$home/.vim/.vimundo/
+set undodir=$HOME/.vim/.vimundo/
 
 "colorscheme
 colorscheme molokai
