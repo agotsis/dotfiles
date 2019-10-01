@@ -1,17 +1,23 @@
 alias dotconfig='/usr/bin/git --git-dir=$HOME/.config/ --work-tree=$HOME'
 
-# perfoce defaults
-export P4PORT=p4sw:2006
+#########################
+### Perforce defaults ###
+#########################
+# software...
+#export P4PORT=p4sw:2006
+#export P4USER=agotsis
+#export P4CLIENT=adg-01
+#export P4IGNORE=$HOME/.p4ignore
+
+export P4PORT=p4hw:2001
 export P4USER=agotsis
-export P4CLIENT=adg-01
+export P4CLIENT=agotsis_training_tree_0
 export P4IGNORE=$HOME/.p4ignore
 
-# and put it in the path
+# Add p4v to the path
 PATH=/usr/local/p4v/bin:$PATH
 # add NVCC
 PATH=/usr/local/cuda/bin:$PATH
-# add linux tools
-PATH=$HOME/p4/dev01/sw/misc/linux:$PATH
 # add misc scripts
 PATH=$PATH:$HOME/bin
 
@@ -19,22 +25,5 @@ setopt auto_cd
 cdpath=($HOME)
 
 # add useful named directories
-hash -d p4r=$HOME/p4/
-
-for i in $(seq -f "%02g" 01 02)
-do
-  hash -d dev$i=~p4r/dev$i/
-  hash -d chips$i=~dev$i/sw/dev/gpu_drv/chips_a/
-  hash -d uvm_test$i=~chips$i/drivers/mm/uvm/tests/uvm_test/
-done
-
-hash -d amd64=$HOME/kernel/Linux_amd64_develop/
-hash -d ppc64le=$HOME/kernel/Linux_ppc64le_develop/
-
-# current client number for scripts
-export P4_CLIENT_NO=01
-
-# defaults
-export UVM_DEST=cb-uvm
-export UVM_ARCH=amd64
+#hash -d p4r=$HOME/p4/
 
