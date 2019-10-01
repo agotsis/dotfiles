@@ -1,3 +1,5 @@
+alias dotconfig='/usr/bin/git --git-dir=$HOME/.config/ --work-tree=$HOME'
+
 # perfoce defaults
 export P4PORT=p4sw:2006
 export P4USER=agotsis
