@@ -11,8 +11,11 @@ alias dotconfig='/usr/bin/git --git-dir=$HOME/.config/ --work-tree=$HOME'
 
 export P4PORT=p4hw:2001
 export P4USER=agotsis
-export P4CLIENT=agotsis_training_tree_0
+export P4CLIENT=agotsis_work_tree
 export P4IGNORE=$HOME/.p4ignore
+export P4DIFF=tkdiff
+
+export FLEXCL_MASTER=fe_flexclone1
 
 # Add p4v to the path
 PATH=/usr/local/p4v/bin:$PATH
@@ -20,10 +23,19 @@ PATH=/usr/local/p4v/bin:$PATH
 PATH=/usr/local/cuda/bin:$PATH
 # add misc scripts
 PATH=$PATH:$HOME/bin
+# scripts for FE / stand_sim
+PATH=$PATH:/home/f_nvgpu_fe1/m/m_PAD_PAD_PAD_PAD_PAD_PAD_PAD_PAD_PAD_40/hw/nvgpu_fe/stand_sim/common/scripts/
 
 setopt auto_cd
 cdpath=($HOME)
 
 # add useful named directories
-#hash -d p4r=$HOME/p4/
+source ~/.zshdirectories
+
+alias v=vim
+alias gv=gvim
+alias nvmk='nocorrect nvmk'
+alias 'p4 revert'='p4 revert -a'
+alias 'p4 reallyrevert'='p4 revert'
+alias p4d='p4 diff &'
 

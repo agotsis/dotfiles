@@ -24,10 +24,10 @@ plugins=(git gitfast git-extras sudo)
 
 source $ZSH/oh-my-zsh.sh
 
-# aliases
+export PAGER=less
+
+# aliases should go in .oh-my-zsh/custom/zshaliases
 alias diff='diff -s'
-
-
 
 
 # Local configuration
