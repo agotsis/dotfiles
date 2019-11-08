@@ -1,6 +1,6 @@
 DOTPATH=".config"
 
-git clone --bare git@github.com:agotsis/dotfiles.git $HOME/$DOTPATH
+git clone -b nv_hw_its --bare git@github.com:agotsis/dotfiles.git $HOME/$DOTPATH
 function config {
   /usr/bin/git --git-dir=$HOME/$DOTPATH/ --work-tree=$HOME $@
 }
