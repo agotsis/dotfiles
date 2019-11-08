@@ -84,4 +84,3 @@ alias fess='cd `depth`/ip/frontend/fe/$FE_IP/stand_sim/private/fe/'
 alias felevels='cd `depth`/ip/frontend/fe/$FE_IP/stand_sim/private/fe/regress/static/testgen/config/levels/'
 alias fev='cd `depth`/ip/frontend/fe/$FE_IP/vmod/fe/'
 
-
