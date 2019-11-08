@@ -29,7 +29,7 @@ PATH=$PATH:/home/f_nvgpu_fe1/m/m_PAD_PAD_PAD_PAD_PAD_PAD_PAD_PAD_PAD_40/hw/nvgpu
 setopt auto_cd
 cdpath=($HOME)
 
-# add useful named directories
+# add useful named directoriea
 source ~/.zshdirectories
 
 alias v=vim
@@ -38,4 +38,50 @@ alias nvmk='nocorrect nvmk'
 alias 'p4 revert'='p4 revert -a'
 alias 'p4 reallyrevert'='p4 revert'
 alias p4d='p4 diff &'
+
+# Nvgpu General
+alias tot     'cd `depth`'
+alias bundles 'cd `depth`/manuals/gr/bundles/'
+alias class   'cd `depth`/class/mfs/class/'
+alias engine  'cd `depth`/class/mfs/engine/'
+alias defs    'cd `depth`/defs/'
+alias manuals 'cd `depth`/manuals/'
+alias methods 'cd `depth`/include/gr/fe/'
+alias pminc   'cd `depth`/ip/perf/hwpm/3.0/include/public/perfmon/litter/'
+alias nessv   'cd `depth`/defs/fermi/ness/verilog/'
+alias nessc   'cd `depth`/fmod/include/ness/ccode/'
+alias spectb  'cd `depth`/fmod/include/ness/misc/'
+alias fcl     'cd /home/f_nvgpu_fe1/c'
+
+# FE Unit Level
+export FE_IP=5.0
+alias fe2='export FE_IP=2.0'
+alias fe3='export FE_IP=3.0'
+alias fe4='export FE_IP=4.0'
+alias fe4p05='export FE_IP=4.05'
+alias fe4p1='export FE_IP=4.1'
+alias fe5p0='export FE_IP=5.0'
+alias fedefs='cd `depth`/ip/frontend/fe/$FE_IP/defs/'
+alias feness='cd `depth`/ip/frontend/fe/$FE_IP/defs/private/ness/'
+alias femods='cd `depth`/ip/frontend/fe/$FE_IP/defs/public/ness/modules/'
+alias feif='cd `depth`/ip/frontend/fe/$FE_IP/defs/public/ness/interfaces/'
+alias fef='cd `depth`/ip/frontend/fe/$FE_IP/fmod/fe/'
+alias feip='cd `depth`/ip/frontend/fe/$FE_IP/'
+alias feclib='cd `depth`/ip/frontend/fe/$FE_IP/stand_sim/private/fe/clib/'
+alias ssp='cd `depth`/ip/frontend/fe/$FE_IP/stand_sim/private/fe/'
+alias fepm='cd `depth`/ip/frontend/fe/$FE_IP/defs/public/perfmon/'
+alias feregs='cd `depth`/ip/frontend/fe/$FE_IP/defs/public/registers/'
+alias fesyn='cd `depth`/ip/frontend/fe/$FE_IP/syn/fe/'
+alias fespy='cd `depth`/ip/frontend/fe/$FE_IP/spyglass/fe/top/'
+alias fediffi='cd `depth`/ip/frontend/fe/$FE_IP/stand_sim/private/fe/diff/'
+alias fescripts='cd `depth`/ip/frontend/fe/$FE_IP/stand_sim/private/fe/scripts/'
+alias festubs='cd `depth`/ip/frontend/fe/$FE_IP/stand_sim/private/fe/stubs/'
+alias fetest='cd `depth`/ip/frontend/fe/$FE_IP/stand_sim/private/fe/regress/'
+alias fegen='cd `depth`/ip/frontend/fe/$FE_IP/stand_sim/private/fe/gen/'
+alias fetb='cd `depth`/ip/frontend/fe/$FE_IP/stand_sim/private/fe/tb/'
+alias fersgi='cd `depth`/ip/frontend/fe/$FE_IP/stand_sim/private/fe/rsg/'
+alias fess='cd `depth`/ip/frontend/fe/$FE_IP/stand_sim/private/fe/'
+alias felevels='cd `depth`/ip/frontend/fe/$FE_IP/stand_sim/private/fe/regress/static/testgen/config/levels/'
+alias fev='cd `depth`/ip/frontend/fe/$FE_IP/vmod/fe/'
+
 
