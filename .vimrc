@@ -6,6 +6,7 @@ set t_Co=256 "256 color
 set encoding=utf-8 "UTF-8 character encoding
 
 set number "Show line numbers
+set relativenumber "Show relative line numbers too
 set cursorline "Highlight current line
 set textwidth=120 " Highlight after this many characters
 
@@ -58,6 +59,10 @@ endif
 " remappings...
 map <ScrollWheelUp> <C-Y>
 map <ScrollWheelDown> <C-E>
+imap jk <Esc>
+imap kj <Esc>
+
+nnoremap - $
 
 let mapleader = "\\"
 nnoremap <Space>w :w<CR>
