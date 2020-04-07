@@ -112,8 +112,8 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
-nnoremap <Leader>wn :match ExtraWhitespace /^\s* \s*\<Bar>\s\+$/<CR>
-nnoremap <Leader>wf :match<CR>
+nnoremap <Leader>hw :match ExtraWhitespace /^\s* \s*\<Bar>\s\+$/<CR>
+nnoremap <Leader>hn :match<CR>
 
 imap <c-k> <c-g>u<Esc>[s1z=`]a<c-g>u
 nmap <c-k> [s1z=<c-o>]`]
@@ -157,7 +157,7 @@ Plug 'scrooloose/nerdcommenter'
 "Tree explorer
 Plug 'scrooloose/nerdtree'
 "alternate files with :A
-Plug 'https://github.com/vim-scripts/a.vim.git'
+Plug 'agotsis/a.vim'
 "git status in gutter
 Plug 'airblade/vim-gitgutter'
 "git from vim
@@ -165,9 +165,10 @@ Plug 'tpope/vim-fugitive'
 "delimiter changing
 Plug 'tpope/vim-surround'
 "delimiter autocompletion
-Plug 'Raimondi/delimitMate'
+"Plug 'Raimondi/delimitMate'
 "Plug 'jiangmiao/auto-pairs'
 Plug 'vim-syntastic/syntastic'
+"tab completion
 Plug 'ervandew/supertab'
 "SystemVerilog
 "Plug 'vhda/verilog_systemverilog.vim'
