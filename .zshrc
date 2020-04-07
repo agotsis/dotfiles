@@ -37,3 +37,8 @@ if [ -f $HOME/.zshlcl ]; then
     source $HOME/.zshlcl
 fi
 
+# Local directory hashes
+if [ -f $HOME/.zshdirectories ]; then
+    source $HOME/.zshdirectories
+fi
+

@@ -1,16 +1,16 @@
-" Alex Gotsis (agotsis) vimrc
+"Alex Gotsis' (agotsis) vimrc
 
-" Start with all of the options
-set nocompatible " forget vi backwards compatibility
+"Start with all of the options
+set nocompatible "forget vi backwards compatibility
 set t_Co=256 "256 color
 set encoding=utf-8 "UTF-8 character encoding
 
 set number "Show line numbers
 set relativenumber "Show relative line numbers too
 set cursorline "Highlight current line
-set textwidth=120 " Highlight after this many characters
+set textwidth=120 "Highlight after this many characters
 
-" Indent 2 spaces
+"Indent 2 spaces
 set tabstop=2  "2 space tabs
 set shiftwidth=2  "2 space shift
 set softtabstop=2  "Tab spaces in no hard tab mode
@@ -49,86 +49,94 @@ set linebreak  "Intelligently wrap long files
 set ttyfast  "Speed up vim
 set nostartofline "Vertical movement preserves horizontal position
 set virtualedit=block "allow virtual block editing
-set autowrite " Automatically save before commands like :next and :make
+set autowrite "Automatically save before commands like :next and :make
 
-" mouse options
+"mouse options
 if has('mouse')
-   set mouse=a
+  set mouse=a
 endif
 
-" remappings...
+"remappings...
 map <ScrollWheelUp> <C-Y>
 map <ScrollWheelDown> <C-E>
+
+"exit insert mode easily
 imap jk <Esc>
 imap kj <Esc>
 
+"put SOL and EOL and end next to each other
 nnoremap - $
 
-let mapleader = "\\"
-nnoremap <Space>w :w<CR>
-nnoremap <Space>q :q<CR>
-nnoremap <Space>e :wq<CR>
-nnoremap <Space>n :wn<CR>
-nnoremap <Space>= ggVG=
-nmap <Space><Space> V
+let mapleader = " "
+nnoremap <Leader>w :w<CR>
+nnoremap <Leader>q :q<CR>
+nnoremap <Leader>e :wq<CR>
+nnoremap <Leader>n :wn<CR>
+nnoremap <Leader>= ggVG=
 
-" List contents of all registers (that typically contain pasteable text).
-nnoremap <silent> "" :registers "0123456789abcdefghijklmnopqrstuvwxyz*+.<CR>"
+"splits navigation
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
-" Block editing, does not conflict with paste
+"List contents of all registers (that typically contain pasteable text).
+nnoremap <silent> "":registers "0123456789abcdefghijklmnopqrstuvwxyz*+.<CR>"
+
+"Block editing, does not conflict with paste
 noremap q <c-v>
 
-" Get rid of warning on save/exit typo
+"Get rid of warning on save/exit typo
 command WQ wq
 command Wq wq
 command W w
 command Q q
 
+"Plugin updating and installation
+command! PU PlugUpdate | PlugUpgrade
+
 set pastetoggle=<F3>
 
-" Strip whitespace from end of lines when writing file
-" autocmd BufWritePre * :%s/\s\+$//e
-autocmd FileType gitcommit setlocal spell "turn on spellchecking for commits
+"Strip whitespace from end of lines when writing file
+"autocmd BufWritePre * :%s/\s\+$//e
 
 nnoremap <silent> <c-0> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
 
-" highlight ExtraWhitespace ctermbg=red guibg=red
-" The following alternative may be less obtrusive.
-highlight ExtraWhitespace ctermbg=darkgreen guibg=lightgreen
-" Try the following if your GUI uses a dark background.
-" highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen"
+highlight ExtraWhitespace ctermbg=red guibg=red
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 
-" highlight trailing whitespace
+"highlight trailing whitespace
 match ExtraWhitespace /\s\+$/
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
-" highlight ExtraWhitespace ctermbg=red guibg=red
-" match ExtraWhitespace /\s\+$/
+
+nnoremap <Leader>wn :match ExtraWhitespace /^\s* \s*\<Bar>\s\+$/<CR>
+nnoremap <Leader>wf :match<CR>
 
 imap <c-k> <c-g>u<Esc>[s1z=`]a<c-g>u
 nmap <c-k> [s1z=<c-o>]`]
 
-" check for lines that are too long!
-" au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+"check for lines that are too long!
+"au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 
-" tell it to use an undo file
+"tell it to use an undo file
 set undofile
-" set a directory to store the undo history
+"set a directory to store the undo history
 set undodir=$HOME/.vim/.vimundo/
 
-" create editor backups
+"create editor backups
 set backupdir=~/.vim/tmp//,.
 set directory=~/.vim/tmp//,.
 set backup
 
-" colorscheme
-colorscheme molokai
-
-" Syntax highlighting and stuff
+"Syntax highlighting and stuff - also implemented by Plug
 syntax on
 filetype plugin indent on
+
+"per FileType options
+autocmd FileType gitcommit setlocal spell "turn on spellchecking for commits
 
 autocmd BufNewFile,BufRead *.vx set syntax=verilog_systemverilog
 autocmd BufNewFile,BufRead *.vcp set syntax=verilog_systemverilog
@@ -140,25 +148,38 @@ autocmd FileType perforce setlocal spell "turn on spellchecking for perforce
 autocmd FileType perforce setlocal noexpandtab "turn on tabs for perforce
 autocmd FileType perforce setlocal list "turn on tabs for perforce
 
-" for syntastic
+"VimPlug plugin manager - https://github.com/junegunn/vim-plug
+call plug#begin('~/.vim/plugged')
+"Color scheme
+Plug 'tomasr/molokai', { 'dir': '~/.vim/colors/molokai'}
+"commenting
+Plug 'scrooloose/nerdcommenter'
+"Tree explorer
+Plug 'scrooloose/nerdtree'
+"alternate files with :A
+Plug 'https://github.com/vim-scripts/a.vim.git'
+"git status in gutter
+Plug 'airblade/vim-gitgutter'
+"git from vim
+Plug 'tpope/vim-fugitive'
+"delimiter changing
+Plug 'tpope/vim-surround'
+"delimiter autocompletion
+Plug 'Raimondi/delimitMate'
+"Plug 'jiangmiao/auto-pairs'
+Plug 'vim-syntastic/syntastic'
+Plug 'ervandew/supertab'
+"SystemVerilog
+"Plug 'vhda/verilog_systemverilog.vim'
+call plug#end()
+
+"for syntastic
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_error_symbol = "✗"
 
-" https://github.com/junegunn/vim-plug
-call plug#begin('~/.vim/plugged')
-Plug 'scrooloose/nerdcommenter'
-Plug 'https://github.com/vim-scripts/a.vim.git'
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-fugitive'
-Plug 'Raimondi/delimitMate'
-Plug 'jiangmiao/auto-pairs'
-Plug 'tomasr/molokai'
-Plug 'vim-syntastic/syntastic'
-Plug 'ervandew/supertab'
-Plug 'vhda/verilog_systemverilog.vim'
-call plug#end()
+let g:airline_theme='molokai'
 
-
-
+"colorscheme
+colorscheme molokai
 

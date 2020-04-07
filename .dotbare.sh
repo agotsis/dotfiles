@@ -35,6 +35,6 @@ config config status.showUntrackedFiles no
 curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-# install molokai
-curl -fLo $HOME/.vim/colors/molokai.vim --create-dirs \
-    https://raw.githubusercontent.com/tomasr/molokai/master/colors/molokai.vim
+# install plugins
+vim +'PlugInstall --sync' +qa
+
