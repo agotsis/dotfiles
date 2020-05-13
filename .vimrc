@@ -92,6 +92,9 @@ command Wq wq
 command W w
 command Q q
 
+" sudo write
+command Swrite w !sudo tee %
+
 "Plugin updating and installation
 command! PU PlugUpdate | PlugUpgrade
 
