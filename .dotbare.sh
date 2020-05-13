@@ -1,4 +1,13 @@
-DOTPATH=".config"
+DOTPATH=${DOTPATH:=".config"}
+
+function requires {
+  command -v $@ >/dev/null 2>&1 || { echo >&2 "I require \'$@\' but it's not installed. Aborting."; exit 1; }
+}
+
+requires git
+requires vim
+requires zsh
+requires curl
 
 # determine which branch to use
 if [ $# -eq 0 ]; then
@@ -16,7 +25,13 @@ else
     branch_name=$1
 fi
 
-git clone -b $branch_name --bare git@github.com:agotsis/dotfiles.git $HOME/$DOTPATH
+if [ $# -eq 2 ]; then
+  repo="https://github.com/agotsis/dotfiles.git"
+else
+  repo="git@github.com:agotsis/dotfiles.git"
+fi
+
+git clone -b $branch_name --bare $repo $HOME/$DOTPATH
 function config {
   /usr/bin/git --git-dir=$HOME/$DOTPATH/ --work-tree=$HOME $@
 }
@@ -35,6 +50,10 @@ config config status.showUntrackedFiles no
 curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+mkdir $HOME/.vim/tmp
 # install plugins
 vim +'PlugInstall --sync' +qa
+
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+mv $HOME/.zshrc.pre-oh-my-zsh $HOME/.zshrc
 
