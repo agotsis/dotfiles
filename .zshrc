@@ -20,7 +20,7 @@ COMPLETION_WAITING_DOTS="true"
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 HIST_STAMPS="mm/dd/yyyy"
 
-plugins=(git gitfast git-extras vi-mode)
+plugins=(git gitfast git-extras)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -40,5 +40,10 @@ fi
 # Local directory hashes
 if [ -f $HOME/.zshdirectories ]; then
     source $HOME/.zshdirectories
+fi
+
+# Local aliases
+if [ -f $HOME/.zshaliases ]; then
+    source $HOME/.zshaliases
 fi
 
