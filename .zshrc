@@ -20,13 +20,16 @@ COMPLETION_WAITING_DOTS="true"
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 HIST_STAMPS="mm/dd/yyyy"
 
-plugins=(git gitfast git-extras)
+plugins=(git gitfast git-extras wd)
 
 source $ZSH/oh-my-zsh.sh
 
 export PAGER=less
 export EDITOR=vim
 
+# vim mode
+export KEYTIMEOUT=1
+bindkey -v
 bindkey -M <all vi modes> jk vi-movement-mode
 
 # aliases should go in .oh-my-zsh/custom/zshaliases
