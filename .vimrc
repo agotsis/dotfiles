@@ -63,6 +63,10 @@ map <ScrollWheelDown> <C-E>
 "exit insert mode easily
 imap jk <Esc>
 imap kj <Esc>
+imap jj <esc>
+imap Jj <esc>
+imap jJ <esc>
+imap JJ <esc>
 
 "put SOL and EOL and end next to each other
 nnoremap - $
@@ -103,7 +107,8 @@ set pastetoggle=<F3>
 "Strip whitespace from end of lines when writing file
 "autocmd BufWritePre * :%s/\s\+$//e
 
-nnoremap <silent> <c-0> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
+"Map <F5> to trim whitespace automatically
+nnoremap <silent> <F5> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
 
 highlight ExtraWhitespace ctermbg=red guibg=red
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
@@ -175,6 +180,10 @@ Plug 'vim-syntastic/syntastic'
 Plug 'ervandew/supertab'
 "SystemVerilog
 "Plug 'vhda/verilog_systemverilog.vim'
+" vim-perforce integration
+Plug 'ngemily/vim-vp4'
+" cscope vim
+Plug 'chazy/cscope_maps'
 call plug#end()
 
 "for syntastic
