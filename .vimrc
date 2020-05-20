@@ -8,9 +8,10 @@ set encoding=utf-8 "UTF-8 character encoding
 set number "Show line numbers
 set relativenumber "Show relative line numbers too
 set cursorline "Highlight current line
-set textwidth=120 "Highlight after this many characters
+set textwidth=80 "Highlight after this many characters
+set colorcolumn=80
 
-"Indent 2 spaces
+"Indent 2 spaces by default
 set tabstop=2  "2 space tabs
 set shiftwidth=2  "2 space shift
 set softtabstop=2  "Tab spaces in no hard tab mode
@@ -50,6 +51,16 @@ set ttyfast  "Speed up vim
 set nostartofline "Vertical movement preserves horizontal position
 set virtualedit=block "allow virtual block editing
 set autowrite "Automatically save before commands like :next and :make
+
+"use an undo file
+set undofile
+"set a directory to store the undo history
+set undodir=$HOME/.vim/.vimundo/
+
+"create editor backups
+set backupdir=~/.vim/tmp//,.
+set directory=~/.vim/tmp//,.
+set backup
 
 "mouse options
 if has('mouse')
@@ -102,88 +113,88 @@ command Swrite w !sudo tee %
 "Plugin updating and installation
 command! PU PlugUpdate | PlugUpgrade
 
+nnoremap <F3> :set invpaste paste?<CR>
 set pastetoggle=<F3>
+set showmode
 
 "Strip whitespace from end of lines when writing file
-"autocmd BufWritePre * :%s/\s\+$//e
+augroup strip_white
+  autocmd BufWritePre * let w:wv = winsaveview() | %s/\s\+$//e | call winrestview(w:wv)
+augroup END
 
-"Map <F5> to trim whitespace automatically
+"Map <F5> to trim whitespace manually
 nnoremap <silent> <F5> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
 
 highlight ExtraWhitespace ctermbg=red guibg=red
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
 
 "highlight trailing whitespace
-match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
+augroup high_white
+  autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+
+  autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+  autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+  autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+  autocmd BufWinLeave * call clearmatches()
+augroup END
 
 nnoremap <Leader>hw :match ExtraWhitespace /^\s* \s*\<Bar>\s\+$/<CR>
 nnoremap <Leader>hn :match<CR>
 
+"TODO ?
 imap <c-k> <c-g>u<Esc>[s1z=`]a<c-g>u
 nmap <c-k> [s1z=<c-o>]`]
 
-"check for lines that are too long!
-"au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+" FileType setting commands
+augroup vsv_type
+  autocmd BufNewFile,BufRead *.{v,sv} set syntax=verilog_systemverilog
+augroup END
 
-"tell it to use an undo file
-set undofile
-"set a directory to store the undo history
-set undodir=$HOME/.vim/.vimundo/
+augroup perfile_local
+  "per FileType options
+  "turn on spellchecking for commits
+  autocmd FileType gitcommit,conf autocmd! high_white
+  autocmd FileType gitcommit,conf setlocal spell
+  autocmd FileType gitcommit,conf hi clear ExtraWhitespace
 
-"create editor backups
-set backupdir=~/.vim/tmp//,.
-set directory=~/.vim/tmp//,.
-set backup
+  "turn on tabs for perforce
+  autocmd FileType perforce setlocal spell ts=2 sw=2i sts=0 noexpandtab list
+augroup END
 
 "Syntax highlighting and stuff - also implemented by Plug
 syntax on
 filetype plugin indent on
 
-"per FileType options
-autocmd FileType gitcommit setlocal spell "turn on spellchecking for commits
-
-autocmd BufNewFile,BufRead *.vx set syntax=verilog_systemverilog
-autocmd BufNewFile,BufRead *.vcp set syntax=verilog_systemverilog
-autocmd BufNewFile,BufRead *.vxctx set syntax=verilog_systemverilog
-autocmd BufNewFile,BufRead *.vcpctx set syntax=verilog_systemverilog
-autocmd BufNewFile,BufRead *.vxh set syntax=verilog_systemverilog
-
-autocmd FileType perforce setlocal spell "turn on spellchecking for perforce
-autocmd FileType perforce setlocal noexpandtab "turn on tabs for perforce
-autocmd FileType perforce setlocal list "turn on tabs for perforce
-
 "VimPlug plugin manager - https://github.com/junegunn/vim-plug
 call plug#begin('~/.vim/plugged')
-"Color scheme
-Plug 'tomasr/molokai', { 'dir': '~/.vim/colors/molokai'}
-"commenting
-Plug 'scrooloose/nerdcommenter'
-"Tree explorer
-Plug 'scrooloose/nerdtree'
-"alternate files with :A
-Plug 'agotsis/a.vim'
-"git status in gutter
-Plug 'airblade/vim-gitgutter'
-"git from vim
-Plug 'tpope/vim-fugitive'
-"delimiter changing
-Plug 'tpope/vim-surround'
-"delimiter autocompletion
-"Plug 'Raimondi/delimitMate'
-"Plug 'jiangmiao/auto-pairs'
-Plug 'vim-syntastic/syntastic'
-"tab completion
-Plug 'ervandew/supertab'
-"SystemVerilog
-"Plug 'vhda/verilog_systemverilog.vim'
-" vim-perforce integration
-Plug 'ngemily/vim-vp4'
-" cscope vim
-Plug 'chazy/cscope_maps'
+  "Color scheme
+  Plug 'tomasr/molokai', { 'dir': '~/.vim/colors/molokai'}
+  "commenting
+  Plug 'scrooloose/nerdcommenter'
+  "Tree explorer
+  Plug 'scrooloose/nerdtree'
+  "alternate files with :A
+  Plug 'agotsis/a.vim'
+  "git status in gutter
+  Plug 'airblade/vim-gitgutter'
+  "git from vim
+  Plug 'tpope/vim-fugitive'
+  "delimiter changing
+  Plug 'tpope/vim-surround'
+  "delimiter autocompletion
+  "Plug 'Raimondi/delimitMate'
+  "Plug 'jiangmiao/auto-pairs'
+  Plug 'vim-syntastic/syntastic'
+  "tab completion
+  Plug 'ervandew/supertab'
+  "SystemVerilog
+  "Plug 'vhda/verilog_systemverilog.vim'
+  "Automatic set paste
+  Plug 'conradirwin/vim-bracketed-paste'
+  " vim-perforce integration
+  Plug 'nfvs/vim-perforce'
+  " cscope vim
+  Plug 'chazy/cscope_maps'
 call plug#end()
 
 "for syntastic
@@ -191,8 +202,10 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_error_symbol = "✗"
 
-let g:airline_theme='molokai'
+"for vim-perforce
+let g:perforce_open_on_change = 1
 
 "colorscheme
 colorscheme molokai
 
+set pastetoggle=<F>
