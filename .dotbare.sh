@@ -46,6 +46,12 @@ fi;
 
 config config status.showUntrackedFiles no
 
+# install iterm2 integrations
+curl -fLo https://iterm2.com/shell_integration/bash \
+    $HOME/.iterm2_shell_integration.bash
+curl -fLo https://iterm2.com/shell_integration/zsh \
+    $HOME/.iterm2_shell_integration.zsh
+
 # install plug
 curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim

@@ -50,3 +50,9 @@ if [ -f $HOME/.zshaliases ]; then
     source $HOME/.zshaliases
 fi
 
+# iterm2 integration
+if [ -f $HOME/.iterm2_shell_integration.zsh ]; then
+  export ITERM2_SQUELCH_MARK=1
+  source $HOME/.iterm2_shell_integration.zsh
+fi
+
