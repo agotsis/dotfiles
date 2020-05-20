@@ -1,0 +1,12 @@
+[user]
+  name = Alex Gotsis
+
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+  interactive = auto
+  grep = auto
+  ui = true
+  pager = true
+
