@@ -28,9 +28,9 @@ export PAGER=less
 export EDITOR=vim
 
 # vim mode
-export KEYTIMEOUT=1
-bindkey -v
-bindkey -M <all vi modes> jk vi-movement-mode
+# export KEYTIMEOUT=1
+# bindkey -v
+# bindkey -M <all vi modes> jk vi-movement-mode
 
 # aliases should go in .oh-my-zsh/custom/zshaliases
 alias diff='diff -s'

@@ -158,8 +158,10 @@ augroup perfile_local
   autocmd FileType gitcommit,conf hi clear ExtraWhitespace
 
   "turn on tabs for perforce
-  autocmd FileType perforce setlocal spell ts=2 sw=2i sts=0 noexpandtab list
+  autocmd FileType perforce setlocal spell ts=2 sw=2 sts=0 noexpandtab list
 augroup END
+
+nnoremap <F7> :setlocal spell ts=2 sw=2 sts=0 noexpandtab list<CR>
 
 "Syntax highlighting and stuff - also implemented by Plug
 syntax on
@@ -174,11 +176,11 @@ call plug#begin('~/.vim/plugged')
   "Tree explorer
   Plug 'scrooloose/nerdtree'
   "alternate files with :A
-  Plug 'agotsis/a.vim'
+  "Plug 'agotsis/a.vim'
   "git status in gutter
   Plug 'airblade/vim-gitgutter'
   "git from vim
-  Plug 'tpope/vim-fugitive'
+  "Plug 'tpope/vim-fugitive'
   "delimiter changing
   Plug 'tpope/vim-surround'
   "delimiter autocompletion
@@ -204,6 +206,9 @@ let g:syntastic_error_symbol = "✗"
 
 "for vim-perforce
 let g:perforce_open_on_change = 1
+
+"for NERDtree
+nmap <F6> NERDTreeToggle<CR>
 
 "colorscheme
 colorscheme molokai
