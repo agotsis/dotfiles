@@ -6,7 +6,7 @@ set t_Co=256 "256 color
 set encoding=utf-8 "UTF-8 character encoding
 
 set number "Show line numbers
-set relativenumber "Show relative line numbers too
+" set relativenumber "Show relative line numbers too
 set cursorline "Highlight current line
 set textwidth=80 "Highlight after this many characters
 set colorcolumn=80
@@ -119,7 +119,8 @@ set showmode
 
 "Strip whitespace from end of lines when writing file
 augroup strip_white
-  autocmd BufWritePre * let w:wv = winsaveview() | %s/\s\+$//e | call winrestview(w:wv)
+  augroup! strip_white
+  "autocmd BufWritePre * let w:wv = winsaveview() | %s/\s\+$//e | call winrestview(w:wv)
 augroup END
 
 "Map <F5> to trim whitespace manually
@@ -149,6 +150,10 @@ nmap <c-k> [s1z=<c-o>]`]
 augroup vsv_type
   autocmd BufNewFile,BufRead *.{v,sv} set syntax=verilog_systemverilog
 augroup END
+
+augroup scons_type
+  autocmd BufNewFile,BufRead *.sc set syntax=python
+augroup EWD
 
 augroup perfile_local
   "per FileType options
