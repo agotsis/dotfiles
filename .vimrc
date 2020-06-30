@@ -119,7 +119,7 @@ set showmode
 
 "Strip whitespace from end of lines when writing file
 augroup strip_white
-  augroup! strip_white
+  " augroup! strip_white
   "autocmd BufWritePre * let w:wv = winsaveview() | %s/\s\+$//e | call winrestview(w:wv)
 augroup END
 
