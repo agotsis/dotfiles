@@ -38,11 +38,11 @@ function config {
 mkdir -p $HOME/.config-backup
 config checkout
 if [ $? = 0  ]; then
-  echo "Checked out config.";
+  echo "Checked out config."
 else
-  echo "Backing up pre-existing dot files.";
+  echo "Backing up pre-existing dot files."
   config checkout $1 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} $HOME/.config-backup/{}
-fi;
+fi
 
 config config status.showUntrackedFiles no
 
@@ -62,4 +62,10 @@ vim +'PlugInstall --sync' +qa
 
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 mv $HOME/.zshrc.pre-oh-my-zsh $HOME/.zshrc
+
+# Use this when not installing mutt
+# config ls-files --deleted -z | config update-index --assume-unchanged -z --stdin
+config update-index --assume-unchanged .gitconfig
+
+echo "Please update .gitconfig with the correct values."
 
