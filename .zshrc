@@ -57,3 +57,6 @@ if [ -f $HOME/.iterm2_shell_integration.zsh ]; then
   source $HOME/.iterm2_shell_integration.zsh
 fi
 
+# direnv hook
+eval "$(direnv hook zsh)"
+
