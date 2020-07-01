@@ -33,8 +33,10 @@ export EDITOR=vim
 # bindkey -v
 # bindkey -M <all vi modes> jk vi-movement-mode
 
-# aliases should go in .oh-my-zsh/custom/zshaliases
-alias diff='diff -s'
+# version controlled aliases
+if [ -f $HOME/.zshaliases ]; then
+    source $HOME/.zshaliases
+fi
 
 # Local configuration
 if [ -f $HOME/.zshlcl ]; then
@@ -42,13 +44,13 @@ if [ -f $HOME/.zshlcl ]; then
 fi
 
 # Local directory hashes
-if [ -f $HOME/.zshdirectories ]; then
-    source $HOME/.zshdirectories
+if [ -f $HOME/.zshdirectorieslcl ]; then
+    source $HOME/.zshdirectorieslcl
 fi
 
 # Local aliases
-if [ -f $HOME/.zshaliases ]; then
-    source $HOME/.zshaliases
+if [ -f $HOME/.zshaliaseslcl ]; then
+    source $HOME/.zshaliaseslcl
 fi
 
 # iterm2 integration
