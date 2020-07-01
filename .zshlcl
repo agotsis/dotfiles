@@ -7,6 +7,22 @@ function config {
   /usr/bin/git --git-dir=$HOME/$DOTPATH/ --work-tree=$HOME $@
 }
 
+agent=`pgrep ssh-agent -u $USER` # get only your agents
+
+if [ -z "$agent" -o ! -e ~/.ssh/.agent_env ]; then
+  # if no agents or environment file is missing create a new one
+
+  # remove old agents / environment variable files
+  pkill ssh-agent -u $USER
+  rm ~/.ssh/.agent_env
+
+  # restart
+  eval `ssh-agent`
+  echo 'export SSH_AUTH_SOCK'=$SSH_AUTH_SOCK >> ~/.ssh/.agent_env
+  echo 'export SSH_AGENT_PID'=$SSH_AGENT_PID >> ~/.ssh/.agent_env
+fi
+source ~/.ssh/.agent_env
+
 if  [ -x "$(command -v fortune)" ] && [ -x "$(command -v cowsay)" ] ; then
   fortune | cowsay
 fi
