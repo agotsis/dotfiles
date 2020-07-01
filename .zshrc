@@ -25,13 +25,18 @@ plugins=(git gitfast git-extras wd sudo colored-man-pages colorize
 
 source $ZSH/oh-my-zsh.sh
 
-export PAGER=less
-export EDITOR=vim
-
 # vim mode
 # export KEYTIMEOUT=1
 # bindkey -v
 # bindkey -M <all vi modes> jk vi-movement-mode
+
+export PAGER=less
+export EDITOR=vim
+
+# local environment variables
+if [ -f $HOME/.environ ]; then
+  source $HOME/.environ
+fi
 
 # version controlled aliases
 if [ -f $HOME/.zshaliases ]; then
