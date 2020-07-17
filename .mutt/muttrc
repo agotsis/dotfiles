@@ -20,7 +20,7 @@ set trash = "~/.mutt/Mail/trash/"
 mailboxes
 
 set imap_check_subscribed="yes"
-set imap_list_subscribed="yes"
+# set imap_list_subscribed="yes"
 set timeout=15
 set mail_check=90
 set imap_keepalive=180
@@ -48,6 +48,9 @@ set signature="~/.mutt/signature"
 set message_cachedir="~/.mutt/cache"
 set header_cache="~/.mutt/header_cache"
 set tmpdir="~/.mutt/tmp"
+
+# Mail content settings
+set attribution="On %[!%F at %T], %n (%a) wrote:"
 
 # Text view first
 set pager_stop="yes"
@@ -100,6 +103,11 @@ bind    pager   n           next-entry
 bind    pager   p           previous-entry
 bind    pager   w           previous-page
 
+macro index S ":set confirmappend=no delete=yes\n<tag-prefix><save-message>=archive\n<sync-mailbox>:set confirmappend=yes delete=ask-yes\n"
+macro index A ":set confirmappend=no delete=yes\n<save-message>=archive\n<sync-mailbox>:set confirmappend=yes delete=ask-yes\n"
+macro index c "<change-folder>?<toggle-mailboxes>" "open a different folder"
+macro index s "<save-message>?<toggle-mailboxes>" "save to a different folder"
+
 # Colors
 color   normal      white default
 color   attachment  brightyellow default
@@ -120,6 +128,6 @@ color   body        brightred default [\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+
 color   body        brightblue default (https?|ftp)://[\-\.,/%~_:?&=\#a-zA-Z0-9]+
 
 # For better looks
-#set markers=no # don't put '+' at the beginning of wrapped lines
+set markers=no # don't put '+' at the beginning of wrapped lines
 #set pager_index_lines= 5 # how large is the index window?
 
