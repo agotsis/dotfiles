@@ -11,10 +11,10 @@ set cursorline "Highlight current line
 set textwidth=80 "Highlight after this many characters
 set colorcolumn=80
 
-"Indent 2 spaces by default
-set tabstop=2  "2 space tabs
-set shiftwidth=2  "2 space shift
-set softtabstop=2  "Tab spaces in no hard tab mode
+"Indent 3 spaces by default
+set tabstop=8  "8 space tabs for actual tabs
+set shiftwidth=3  "3 space shift
+set softtabstop=3  "Tab spaces in no hard tab mode
 set expandtab  "Expand tabs into spaces
 set autoindent  "autoindent on new lines
 
@@ -23,9 +23,14 @@ set showmatch  "Highlight matching braces
 set ruler  "Show bottom ruler
 
 set equalalways  "Split windows equal size
+set splitright  "Split to the right
 
-set formatoptions=croq  "Enable comment line auto formatting
+set formatoptions+=croqt  "Enable comment line auto formatting
+set formatprg=par\ -w80rq
 set comments=sl:/*,mb:*,elx:*/
+" Use the same symbols as TextMate for tabstops and EOLs
+set listchars=tab:▸\ ,eol:⏎
+
 set wildignore+=*.o,*.obj,*.class,*.swp,*.pyc "Ignore junk files
 set title  "Set window title to file
 set hlsearch  "Highlight on search
@@ -52,6 +57,11 @@ set nostartofline "Vertical movement preserves horizontal position
 set virtualedit=block "allow virtual block editing
 set autowrite "Automatically save before commands like :next and :make
 
+"timeout settings
+set timeoutlen=3000
+set ttimeout
+set ttimeoutlen=200
+
 "use an undo file
 set undofile
 "set a directory to store the undo history
@@ -66,6 +76,9 @@ set backup
 if has('mouse')
   set mouse=a
 endif
+
+"cosmetics
+set statusline="%f%m%r%h%w [%Y] [0x%02.2B]%< %F%=%4v,%4l %3p%% of %L"
 
 "remappings...
 map <ScrollWheelUp> <C-Y>
@@ -88,6 +101,10 @@ nnoremap <Leader>q :q<CR>
 nnoremap <Leader>e :wq<CR>
 nnoremap <Leader>n :wn<CR>
 nnoremap <Leader>= ggVG=
+" Shortcut to rapidly toggle `set list`
+nnoremap <Leader>l :set list!<CR>
+" Shortcut to format everything
+nnoremap <Leader>f gqip
 
 "splits navigation
 nnoremap <C-J> <C-W><C-J>
@@ -163,10 +180,10 @@ augroup perfile_local
   autocmd FileType gitcommit,conf hi clear ExtraWhitespace
 
   "turn on tabs for perforce
-  autocmd FileType perforce setlocal spell ts=2 sw=2 sts=0 noexpandtab list
+  autocmd FileType perforce setlocal spell ts=8 sw=8 sts=0 noexpandtab list colorcolumn=72
 augroup END
 
-nnoremap <F7> :setlocal spell ts=2 sw=2 sts=0 noexpandtab list<CR>
+nnoremap <F7> :setlocal spell ts=2 sw=2 sts=0 noexpandtab list colorcolumn=72<CR>
 
 "Syntax highlighting and stuff - also implemented by Plug
 syntax on
@@ -217,5 +234,9 @@ nmap <F6> NERDTreeToggle<CR>
 
 "colorscheme
 colorscheme molokai
+
+"Invisible character colors
+highlight NonText guifg=#999580
+highlight SpecialKey guifg=#999580
 
 set pastetoggle=<F>
