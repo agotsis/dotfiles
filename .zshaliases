@@ -1,4 +1,5 @@
 alias v="vim"
+alias nm="neomutt"
 
 alias diff='diff -s'
 
