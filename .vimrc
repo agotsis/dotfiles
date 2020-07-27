@@ -25,6 +25,8 @@ set ruler  "Show bottom ruler
 set equalalways  "Split windows equal size
 set splitright  "Split to the right
 
+set pastetoggle=<F3>
+
 set formatoptions+=croqt  "Enable comment line auto formatting
 set formatprg=par\ -w80rq
 set comments=sl:/*,mb:*,elx:*/
@@ -58,7 +60,7 @@ set virtualedit=block "allow virtual block editing
 set autowrite "Automatically save before commands like :next and :make
 
 "timeout settings
-set timeoutlen=3000
+set timeoutlen=1200
 set ttimeout
 set ttimeoutlen=200
 
@@ -85,12 +87,37 @@ map <ScrollWheelUp> <C-Y>
 map <ScrollWheelDown> <C-E>
 
 "exit insert mode easily
-imap jk <Esc>
-imap kj <Esc>
-imap jj <esc>
-imap Jj <esc>
-imap jJ <esc>
-imap JJ <esc>
+inoremap jk <Esc>
+inoremap kj <Esc>
+inoremap jj <esc>
+inoremap Jj <esc>
+inoremap jJ <esc>
+inoremap JJ <esc>
+
+"Make basic movements work better with wrapped lines
+nnoremap j gj
+nnoremap gj j
+nnoremap k gk
+nnoremap gk k
+
+"So I can move around in insert mode
+inoremap <C-k> <C-o>gk
+inoremap <C-h> <Left>
+inoremap <C-l> <Right>
+inoremap <C-j> <C-o>gj
+
+"So I can move around in command mode
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+cnoremap <C-k> <Up>
+cnoremap <C-j> <Down>
+cnoremap <C-h> <Left>
+cnoremap <C-l> <Right>
+cnoremap <M-b> <S-Left>
+cnoremap <M-f> <S-Right>
+
+"Get rid of pesky "ex mode"
+nnoremap Q <nop>
 
 "put SOL and EOL and end next to each other
 nnoremap - $
@@ -107,22 +134,27 @@ nnoremap <Leader>l :set list!<CR>
 nnoremap <Leader>f gqip
 
 "splits navigation
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+nnoremap <C-j> <C-w><C-j>
+nnoremap <C-k> <C-w><C-k>
+nnoremap <C-l> <C-w><C-l>
+nnoremap <C-h> <C-w><C-h>
 
 "List contents of all registers (that typically contain pasteable text).
 nnoremap <silent> "":registers "0123456789abcdefghijklmnopqrstuvwxyz*+.<CR>"
 
 "Block editing, does not conflict with paste
-noremap q <c-v>
+noremap q <C-v>
 
 "Get rid of warning on save/exit typo
 command WQ wq
 command Wq wq
 command W w
 command Q q
+
+map <C-t><k> :tabr<CR>
+map <C-t><j> :tabl<CR>
+map <C-t><h> :tabp<CR>
+map <C-t><l> :tabn<CR>
 
 " sudo write
 command Swrite w !sudo tee %
@@ -179,11 +211,19 @@ augroup perfile_local
   autocmd FileType gitcommit,conf setlocal spell
   autocmd FileType gitcommit,conf hi clear ExtraWhitespace
 
+  "turn on spellchecking for mail
+  autocmd FileType mail setlocal spell
+  autocmd FileType mail %s/^> $//eg | call setpos('.', getpos("''"))
+  autocmd FileType mail %s/> >/>>/eg | call setpos('.', getpos("''"))
+
   "turn on tabs for perforce
   autocmd FileType perforce setlocal spell ts=8 sw=8 sts=0 noexpandtab list colorcolumn=72
 augroup END
 
-nnoremap <F7> :setlocal spell ts=2 sw=2 sts=0 noexpandtab list colorcolumn=72<CR>
+nnoremap <F7> :setlocal spell ts=8 sw=8 sts=0 noexpandtab list colorcolumn=72<CR>
+
+"Automagically resize splits when the host is resized
+autocmd VimResized * wincmd =
 
 "Syntax highlighting and stuff - also implemented by Plug
 syntax on
@@ -227,10 +267,15 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_error_symbol = "✗"
 
 "for vim-perforce
-let g:perforce_open_on_change = 1
+let g:perforce_open_on_change = 0
 
 "for NERDtree
-nmap <F6> NERDTreeToggle<CR>
+nmap <F2> :NERDTreeToggle<CR>
+
+let NERDTreeDirArrows = 1
+let NERDTreeAutoDeleteBuffer = 1
+
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 "colorscheme
 colorscheme molokai
@@ -239,4 +284,3 @@ colorscheme molokai
 highlight NonText guifg=#999580
 highlight SpecialKey guifg=#999580
 
-set pastetoggle=<F>
