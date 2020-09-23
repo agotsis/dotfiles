@@ -28,7 +28,7 @@ set splitright  "Split to the right
 set pastetoggle=<F3>
 
 set formatoptions+=croqt  "Enable comment line auto formatting
-set formatprg=par\ -w80rq
+set formatprg=par\ -w72rq
 set comments=sl:/*,mb:*,elx:*/
 " Use the same symbols as TextMate for tabstops and EOLs
 set listchars=tab:▸\ ,eol:⏎
@@ -151,10 +151,10 @@ command Wq wq
 command W w
 command Q q
 
-map <C-t><k> :tabr<CR>
-map <C-t><j> :tabl<CR>
-map <C-t><h> :tabp<CR>
-map <C-t><l> :tabn<CR>
+map <C-q><k> :tabr<CR>
+map <C-q><j> :tabl<CR>
+map <C-q><h> :tabp<CR>
+map <C-q><l> :tabn<CR>
 
 " sudo write
 command Swrite w !sudo tee %
@@ -174,6 +174,12 @@ augroup END
 
 "Map <F5> to trim whitespace manually
 nnoremap <silent> <F5> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
+
+"Map <F9> to set par to 72 chars
+nnoremap <F9> :set formatprg=par\ -w72rq <CR>
+
+"Map <F10> to set par to 72 chars
+nnoremap <F10> :set formatprg=par\ -w80rq <CR>
 
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
