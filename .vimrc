@@ -231,6 +231,10 @@ nnoremap <F7> :setlocal spell ts=8 sw=8 sts=0 noexpandtab list colorcolumn=72<CR
 "Automagically resize splits when the host is resized
 autocmd VimResized * wincmd =
 
+if filereadable("~/.vimlcl")
+   source ~/.vimlcl
+endif
+
 "Syntax highlighting and stuff - also implemented by Plug
 syntax on
 filetype plugin indent on
