@@ -4,3 +4,6 @@
 .config
 .gitconfig
 
+.envrc
+.reviewboardrc
+bora/tags
