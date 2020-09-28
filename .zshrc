@@ -21,21 +21,18 @@ COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="mm/dd/yyyy"
 
 plugins=(git gitfast git-extras wd sudo colored-man-pages colorize
-         command-not-found)
+         command-not-found fzf)
 
 source $ZSH/oh-my-zsh.sh
 
-# vim mode
-# export KEYTIMEOUT=1
-# bindkey -v
-# bindkey -M <all vi modes> jk vi-movement-mode
-
-export PAGER=less
-export EDITOR=vim
-
-# local environment variables
+# version controlled environment variables
 if [ -f $HOME/.environ ]; then
   source $HOME/.environ
+fi
+
+# local environment variables
+if [ -f $HOME/.environlcl ]; then
+  source $HOME/.environlcl
 fi
 
 # version controlled aliases
@@ -65,5 +62,7 @@ if [ -f $HOME/.iterm2_shell_integration.zsh ]; then
 fi
 
 # direnv hook
-eval "$(direnv hook zsh)"
+if type "direnv" > /dev/null; then
+   eval "$(direnv hook zsh)"
+fi
 
