@@ -110,7 +110,9 @@ inoremap <C-j> <C-o>gj
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 cnoremap <C-k> <Up>
+cnoremap <C-p> <Up>
 cnoremap <C-j> <Down>
+cnoremap <C-n> <Down>
 cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
 cnoremap <M-b> <S-Left>
