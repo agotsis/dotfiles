@@ -79,12 +79,6 @@ set index_format=" %?M?   ↳&%4C?   %Z      %D     %-15.15n    %s"
 
 bind index,pager g group-reply
 
-bind    index   G  imap-fetch-mail
-macro   index   ti "<change-folder>=INBOX<enter>"       "Go to Inbox"
-macro   index   ts "<change-folder>=$my_sent<enter>"    "Go to Sent"
-macro   index   td "<change-folder>=$my_drafts<enter>"  "Go to Drafts"
-macro   index   tt "<change-folder>=$my_trash<enter>"   "Go to Trash"
-
 # Index
 bind    index   <up>        previous-entry
 bind    index   <down>      next-entry
@@ -92,9 +86,15 @@ bind    index   <delete>    delete-message
 bind    index   n           next-entry
 bind    index   p           previous-entry
 macro   index   Q           ":set quit=yes\nq" "Quit mutt without asking"
+bind    index   c           noop
 bind    index   C           noop
 bind    index   -           collapse-thread
 bind    index   _           collapse-all
+bind    index   G  imap-fetch-mail
+macro   index   Ci "<change-folder>=INBOX<enter>"       "Go to Inbox"
+macro   index   Cs "<change-folder>=$my_sent<enter>"    "Go to Sent"
+macro   index   Cd "<change-folder>=$my_drafts<enter>"  "Go to Drafts"
+macro   index   Ct "<change-folder>=$my_trash<enter>"   "Go to Trash"
 
 # Pager
 bind    pager   <up>        previous-line
@@ -108,8 +108,8 @@ bind    pager   n           next-entry
 bind    pager   p           previous-entry
 bind    pager   w           previous-page
 
-macro index S ":set confirmappend=no delete=yes\n<tag-prefix><save-message>=archive\n<sync-mailbox>:set confirmappend=yes delete=ask-yes\n"
-macro index A ":set confirmappend=no delete=yes\n<save-message>=archive\n<sync-mailbox>:set confirmappend=yes delete=ask-yes\n"
+macro index S ":set confirmappend=no\n<tag-prefix><save-message>=archive\n<sync-mailbox>:set confirmappend=yes\n"
+macro index A ":set confirmappend=no\n<save-message>=archive\n<sync-mailbox>:set confirmappend=yes\n"
 macro index c "<change-folder>?<toggle-mailboxes>" "open a different folder"
 macro index s "<save-message>?<toggle-mailboxes>" "save to a different folder"
 
