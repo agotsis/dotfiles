@@ -60,9 +60,8 @@ set virtualedit=block "allow virtual block editing
 set autowrite "Automatically save before commands like :next and :make
 
 "timeout settings
-set timeoutlen=1200
 set ttimeout
-set ttimeoutlen=200
+set ttimeoutlen=400
 
 "use an undo file
 set undofile
@@ -94,6 +93,14 @@ inoremap Jj <esc>
 inoremap jJ <esc>
 inoremap JJ <esc>
 
+"exit visual mode easily too
+vnoremap jk <Esc>
+vnoremap kj <Esc>
+vnoremap jj <esc>
+vnoremap Jj <esc>
+vnoremap jJ <esc>
+vnoremap JJ <esc>
+
 "Make basic movements work better with wrapped lines
 nnoremap j gj
 nnoremap gj j
@@ -117,6 +124,13 @@ cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
 cnoremap <M-b> <S-Left>
 cnoremap <M-f> <S-Right>
+
+"map fzf things
+nnoremap ? :BLines<CR>
+nnoremap <C-O> :Files<CR>
+
+"open last pane
+nmap <c-s-t> :vs<bar>:b#<CR>
 
 "Get rid of pesky "ex mode"
 nnoremap Q <nop>
@@ -153,10 +167,12 @@ command Wq wq
 command W w
 command Q q
 
-map <C-q><k> :tabr<CR>
-map <C-q><j> :tabl<CR>
-map <C-q><h> :tabp<CR>
-map <C-q><l> :tabn<CR>
+nnoremap H gT
+nnoremap L gt
+nnoremap <C-q><k> :tabr<CR>
+nnoremap <C-q><j> :tabl<CR>
+nnoremap <C-q><h> :tabp<CR>
+nnoremap <C-q><l> :tabn<CR>
 
 " sudo write
 command Swrite w !sudo tee %
@@ -271,6 +287,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'nfvs/vim-perforce'
   " cscope vim
   Plug 'chazy/cscope_maps'
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  " fzf plugin
+  Plug 'junegunn/fzf.vim'
 call plug#end()
 
 "for syntastic
@@ -296,3 +315,4 @@ colorscheme molokai
 highlight NonText guifg=#999580
 highlight SpecialKey guifg=#999580
 
+" vim: softtabstop=2 shiftwidth=2 expandtab
