@@ -94,12 +94,8 @@ inoremap jJ <esc>
 inoremap JJ <esc>
 
 "exit visual mode easily too
-vnoremap jk <Esc>
-vnoremap kj <Esc>
-vnoremap jj <esc>
-vnoremap Jj <esc>
-vnoremap jJ <esc>
-vnoremap JJ <esc>
+vnoremap hj <Esc>
+vnoremap kl <Esc>
 
 "Make basic movements work better with wrapped lines
 nnoremap j gj
@@ -127,10 +123,12 @@ cnoremap <M-f> <S-Right>
 
 "map fzf things
 nnoremap ? :BLines<CR>
-nnoremap <C-O> :Files<CR>
+nnoremap <C-o> :Files<CR>
+
+nnoremap <C-x> :Files /t/agotsis-dvx-0/dvx-bora/<CR>
 
 "open last pane
-nmap <c-s-t> :vs<bar>:b#<CR>
+nmap <c-s-p> :vs<bar>:b#<CR>
 
 "Get rid of pesky "ex mode"
 nnoremap Q <nop>

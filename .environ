@@ -1,6 +1,8 @@
 export PAGER=less
 export EDITOR=vim
 
+export PATH=${PATH}:$HOME/bin
+
 # Configure fzf, command line fuzzy finder
 export FZF_COMPLETION_TRIGGER="'"
 FD_OPTIONS="--follow --exclude .git"
