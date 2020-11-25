@@ -1,10 +1,14 @@
 alias sudo='sudo '
 
+alias cd='cd -P'
+
 alias v="vim"
 alias nm="neomutt"
+alias rmi="rm -i"
 
 alias diff='diff -s'
 
 alias gpom="git push origin master"
 alias glom="git pull origin master"
 
+alias le="less"
