@@ -6,7 +6,7 @@ set t_Co=256 "256 color
 set encoding=utf-8 "UTF-8 character encoding
 
 set number "Show line numbers
-" set relativenumber "Show relative line numbers too
+set relativenumber "Show relative line numbers too
 set cursorline "Highlight current line
 set textwidth=80 "Highlight after this many characters
 set colorcolumn=80
@@ -24,8 +24,6 @@ set ruler  "Show bottom ruler
 
 set equalalways  "Split windows equal size
 set splitright  "Split to the right
-
-set pastetoggle=<F3>
 
 set formatoptions+=croqt  "Enable comment line auto formatting
 set formatprg=par\ -w72rq
@@ -61,7 +59,7 @@ set autowrite "Automatically save before commands like :next and :make
 
 "timeout settings
 set ttimeout
-set ttimeoutlen=400
+set ttimeoutlen=250
 
 "use an undo file
 set undofile
@@ -95,7 +93,7 @@ inoremap JJ <esc>
 
 "exit visual mode easily too
 vnoremap hj <Esc>
-vnoremap kl <Esc>
+vnoremap lk <Esc>
 
 "Make basic movements work better with wrapped lines
 nnoremap j gj
@@ -128,7 +126,7 @@ nnoremap <C-o> :Files<CR>
 nnoremap <C-x> :Files /t/agotsis-dvx-0/dvx-bora/<CR>
 
 "open last pane
-nmap <c-s-p> :vs<bar>:b#<CR>
+nmap <C-S-p> :vs<bar>:b#<CR>
 
 "Get rid of pesky "ex mode"
 nnoremap Q <nop>
@@ -142,6 +140,7 @@ nnoremap <Leader>q :q<CR>
 nnoremap <Leader>e :wq<CR>
 nnoremap <Leader>n :wn<CR>
 nnoremap <Leader>= ggVG=
+nnoremap <Leader>p gqip
 " Shortcut to rapidly toggle `set list`
 nnoremap <Leader>l :set list!<CR>
 " Shortcut to format everything
@@ -178,8 +177,8 @@ command Swrite w !sudo tee %
 "Plugin updating and installation
 command! PU PlugUpdate | PlugUpgrade
 
-nnoremap <F3> :set invpaste paste?<CR>
-set pastetoggle=<F3>
+nnoremap <F2> :set invpaste paste?<CR>
+set pastetoggle=<F2>
 set showmode
 
 "Strip whitespace from end of lines when writing file
@@ -197,6 +196,9 @@ nnoremap <F9> :set formatprg=par\ -w72rq <CR>
 "Map <F10> to set par to 72 chars
 nnoremap <F10> :set formatprg=par\ -w80rq <CR>
 
+"Map <F3> to a spellchecking toggle
+nnoremap <F3> :set spell! <CR>
+
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 
@@ -213,9 +215,9 @@ augroup END
 nnoremap <Leader>hw :match ExtraWhitespace /^\s* \s*\<Bar>\s\+$/<CR>
 nnoremap <Leader>hn :match<CR>
 
-"TODO ?
-imap <c-k> <c-g>u<Esc>[s1z=`]a<c-g>u
-nmap <c-k> [s1z=<c-o>]`]
+" TODO, spellchecking commands
+" inoremap <C-k> <C-g>u<Esc>[s1z=`]a<C-g>u
+" nnoremap <C-k> [s1z=<C-o>]`]
 
 " FileType setting commands
 augroup vsv_type
