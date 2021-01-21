@@ -179,8 +179,8 @@ command Swrite w !sudo tee %
 "Plugin updating and installation
 command! PU PlugUpdate | PlugUpgrade
 
-nnoremap <F2> :set invpaste paste?<CR>
-set pastetoggle=<F2>
+nnoremap <F3> :set invpaste paste?<CR>
+set pastetoggle=<F3>
 set showmode
 
 "Strip whitespace from end of lines when writing file
@@ -192,14 +192,14 @@ augroup END
 "Map <F5> to trim whitespace manually
 nnoremap <silent> <F5> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
 
+"Map <F8> to set par to 72 chars
+nnoremap <F8> :set formatprg=par\ -w72rq <CR>
+
 "Map <F9> to set par to 72 chars
-nnoremap <F9> :set formatprg=par\ -w72rq <CR>
+nnoremap <F9> :set formatprg=par\ -w80rq <CR>
 
-"Map <F10> to set par to 72 chars
-nnoremap <F10> :set formatprg=par\ -w80rq <CR>
-
-"Map <F3> to a spellchecking toggle
-nnoremap <F3> :set spell! <CR>
+"Map <F4> to a spellchecking toggle
+nnoremap <F4> :set spell! <CR>
 
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
