@@ -37,19 +37,18 @@ setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording en
 setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
 setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 
-plugins=(git gitfast git-extras wd sudo colored-man-pages colorize
-         command-not-found fzf)
+plugins=(git gitfast git-extras wd sudo colored-man-pages colorize fzf)
 
 source $ZSH/oh-my-zsh.sh
-
-# version controlled environment variables
-if [ -f $HOME/.environ ]; then
-  source $HOME/.environ
-fi
 
 # local environment variables
 if [ -f $HOME/.environlcl ]; then
   source $HOME/.environlcl
+fi
+
+# version controlled environment variables
+if [ -f $HOME/.environ ]; then
+  source $HOME/.environ
 fi
 
 # version controlled aliases

@@ -6,4 +6,8 @@
 
 .envrc
 .reviewboardrc
+*.efi
 bora/tags
+.iscons.log
+.iscons.pid
+scons/build

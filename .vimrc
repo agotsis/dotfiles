@@ -145,6 +145,8 @@ nnoremap <Leader>p gqip
 nnoremap <Leader>l :set list!<CR>
 " Shortcut to format everything
 nnoremap <Leader>f gqip
+nnoremap <Leader>s :! stg series
+nnoremap <Leader>r :! stg refresh
 
 "splits navigation
 nnoremap <C-j> <C-w><C-j>
