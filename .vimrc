@@ -78,42 +78,55 @@ endif
 
 "cosmetics
 set statusline="%f%m%r%h%w [%Y] [0x%02.2B]%< %F%=%4v,%4l %3p%% of %L"
+set laststatus=2
+
+"Remappings for Colemak
+"Tarmak loop 1
+noremap j e
+noremap e k
+noremap k n
+noremap n j
+
+noremap J E
+noremap E K
+noremap K N
+noremap N J
 
 "remappings...
 map <ScrollWheelUp> <C-Y>
 map <ScrollWheelDown> <C-E>
 
 "exit insert mode easily
-inoremap jk <Esc>
-inoremap kj <Esc>
-inoremap jj <esc>
-inoremap Jj <esc>
-inoremap jJ <esc>
-inoremap JJ <esc>
+inoremap ne <Esc>
+inoremap ne <Esc>
+inoremap nn <esc>
+inoremap Nn <esc>
+inoremap nN <esc>
+inoremap NN <esc>
 
 "exit visual mode easily too
-vnoremap hj <Esc>
-vnoremap lk <Esc>
+vnoremap ne <Esc>
+vnoremap en <Esc>
 
 "Make basic movements work better with wrapped lines
-nnoremap j gj
-nnoremap gj j
-nnoremap k gk
-nnoremap gk k
+nnoremap n gj
+nnoremap gn j
+nnoremap e gk
+nnoremap ge k
 
 "So I can move around in insert mode
-inoremap <C-k> <C-o>gk
+inoremap <C-e> <C-o>gk
 inoremap <C-h> <Left>
 inoremap <C-l> <Right>
-inoremap <C-j> <C-o>gj
+inoremap <C-n> <C-o>gj
 
 "So I can move around in command mode
 cnoremap <C-a> <Home>
-cnoremap <C-e> <End>
-cnoremap <C-k> <Up>
+cnoremap <C-j> <End>
+cnoremap <C-e> <Up>
 cnoremap <C-p> <Up>
-cnoremap <C-j> <Down>
-cnoremap <C-n> <Down>
+cnoremap <C-e> <Down>
+cnoremap <C-k> <Down>
 cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
 cnoremap <M-b> <S-Left>
@@ -137,8 +150,8 @@ nnoremap - $
 let mapleader = " "
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
-nnoremap <Leader>e :wq<CR>
-nnoremap <Leader>n :wn<CR>
+nnoremap <Leader>j :wq<CR>
+nnoremap <Leader>k :wn<CR>
 nnoremap <Leader>= ggVG=
 nnoremap <Leader>p gqip
 " Shortcut to rapidly toggle `set list`
@@ -149,8 +162,8 @@ nnoremap <Leader>s :! stg series
 nnoremap <Leader>r :! stg refresh
 
 "splits navigation
-nnoremap <C-j> <C-w><C-j>
-nnoremap <C-k> <C-w><C-k>
+nnoremap <C-n> <C-w><C-j>
+nnoremap <C-e> <C-w><C-k>
 nnoremap <C-l> <C-w><C-l>
 nnoremap <C-h> <C-w><C-h>
 
@@ -168,8 +181,8 @@ command Q q
 
 nnoremap H gT
 nnoremap L gt
-nnoremap <C-q><k> :tabr<CR>
-nnoremap <C-q><j> :tabl<CR>
+nnoremap <C-q><e> :tabr<CR>
+nnoremap <C-q><n> :tabl<CR>
 nnoremap <C-q><h> :tabp<CR>
 nnoremap <C-q><l> :tabn<CR>
 
