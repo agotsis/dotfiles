@@ -82,31 +82,27 @@ set laststatus=2
 
 "Remappings for Colemak
 "Tarmak loop 1
-noremap j e
-noremap e k
+"noremap j e
+"noremap e k
 noremap k n
-noremap n j
+"noremap n j
 
-noremap J E
-noremap E K
+"noremap J E
+"noremap E K
 noremap K N
-noremap N J
+"noremap N J
 
 "remappings...
 map <ScrollWheelUp> <C-Y>
 map <ScrollWheelDown> <C-E>
 
 "exit insert mode easily
-inoremap ne <Esc>
-inoremap ne <Esc>
-inoremap nn <esc>
-inoremap Nn <esc>
-inoremap nN <esc>
-inoremap NN <esc>
+inoremap ;l <esc>
+inoremap ;n <esc>
 
 "exit visual mode easily too
-vnoremap ne <Esc>
-vnoremap en <Esc>
+vnoremap hn <Esc>
+vnoremap le <Esc>
 
 "Make basic movements work better with wrapped lines
 nnoremap n gj
@@ -114,19 +110,21 @@ nnoremap gn j
 nnoremap e gk
 nnoremap ge k
 
+vnoremap n j
+vnoremap e k
+
 "So I can move around in insert mode
-inoremap <C-e> <C-o>gk
+inoremap <C-k> <C-o>gk
 inoremap <C-h> <Left>
 inoremap <C-l> <Right>
-inoremap <C-n> <C-o>gj
+inoremap <C-j> <C-o>gj
 
 "So I can move around in command mode
 cnoremap <C-a> <Home>
-cnoremap <C-j> <End>
-cnoremap <C-e> <Up>
+cnoremap <C-k> <Up>
 cnoremap <C-p> <Up>
-cnoremap <C-e> <Down>
-cnoremap <C-k> <Down>
+cnoremap <C-j> <Down>
+cnoremap <C-n> <Down>
 cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
 cnoremap <M-b> <S-Left>
@@ -150,8 +148,8 @@ nnoremap - $
 let mapleader = " "
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
-nnoremap <Leader>j :wq<CR>
-nnoremap <Leader>k :wn<CR>
+nnoremap <Leader>e :wq<CR>
+nnoremap <Leader>n :wn<CR>
 nnoremap <Leader>= ggVG=
 nnoremap <Leader>p gqip
 " Shortcut to rapidly toggle `set list`
@@ -162,8 +160,8 @@ nnoremap <Leader>s :! stg series
 nnoremap <Leader>r :! stg refresh
 
 "splits navigation
-nnoremap <C-n> <C-w><C-j>
-nnoremap <C-e> <C-w><C-k>
+nnoremap <C-j> <C-w><C-j>
+nnoremap <C-k> <C-w><C-k>
 nnoremap <C-l> <C-w><C-l>
 nnoremap <C-h> <C-w><C-h>
 
