@@ -114,10 +114,10 @@ vnoremap n j
 vnoremap e k
 
 "So I can move around in insert mode
-inoremap <C-k> <C-o>gk
+inoremap <C-e> <C-o>gk
 inoremap <C-h> <Left>
 inoremap <C-l> <Right>
-inoremap <C-j> <C-o>gj
+inoremap <C-n> <C-o>gj
 
 "So I can move around in command mode
 cnoremap <C-a> <Home>
@@ -152,10 +152,10 @@ nnoremap <Leader>e :wq<CR>
 nnoremap <Leader>n :wn<CR>
 nnoremap <Leader>= ggVG=
 nnoremap <Leader>p gqip
+nnoremap <Leader>f :e
 " Shortcut to rapidly toggle `set list`
 nnoremap <Leader>l :set list!<CR>
 " Shortcut to format everything
-nnoremap <Leader>f gqip
 nnoremap <Leader>s :! stg series
 nnoremap <Leader>r :! stg refresh
 
@@ -286,6 +286,7 @@ call plug#begin('~/.vim/plugged')
   "Plug 'tpope/vim-fugitive'
   "delimiter changing
   Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-abolish'
   "delimiter autocompletion
   "Plug 'Raimondi/delimitMate'
   "Plug 'jiangmiao/auto-pairs'

@@ -4,10 +4,16 @@
 .config
 .gitconfig
 
+tags
+
 .envrc
 .reviewboardrc
 *.efi
 bora/tags
 .iscons.log
+.iscons.log.last
 .iscons.pid
 scons/build
+scons/lib/isconslib/platforms/linux.py
+ncscope.in.out
+ncscope.po.out

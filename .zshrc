@@ -37,7 +37,9 @@ setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording en
 setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
 setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 
-plugins=(git gitfast git-extras wd sudo colored-man-pages colorize fzf)
+DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+plugins=(git gitfast wd colorize fzf)
 
 source $ZSH/oh-my-zsh.sh
 
