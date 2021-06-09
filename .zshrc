@@ -39,18 +39,25 @@ setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-plugins=(git gitfast wd colorize fzf)
+plugins=(
+         git
+         gitfast
+         wd
+         fzf
+         #zsh-autosuggestions
+         #zsh-syntax-highlighting
+        )
 
 source $ZSH/oh-my-zsh.sh
-
-# local environment variables
-if [ -f $HOME/.environlcl ]; then
-  source $HOME/.environlcl
-fi
 
 # version controlled environment variables
 if [ -f $HOME/.environ ]; then
   source $HOME/.environ
+fi
+
+# local environment variables
+if [ -f $HOME/.environlcl ]; then
+  source $HOME/.environlcl
 fi
 
 # version controlled aliases
