@@ -17,3 +17,7 @@ scons/build
 scons/lib/isconslib/platforms/linux.py
 ncscope.in.out
 ncscope.po.out
+
+.vscode
+.vscode-ctags
+.vscode-ctags.next

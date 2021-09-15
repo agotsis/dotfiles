@@ -81,15 +81,13 @@ set statusline="%f%m%r%h%w [%Y] [0x%02.2B]%< %F%=%4v,%4l %3p%% of %L"
 set laststatus=2
 
 "Remappings for Colemak
-"Tarmak loop 1
-"noremap j e
-"noremap e k
 noremap k n
-"noremap n j
+noremap i l
+noremap l i
 
-"noremap J E
-"noremap E K
 noremap K N
+noremap I L
+noremap L I
 "noremap N J
 
 "remappings...
@@ -97,12 +95,10 @@ map <ScrollWheelUp> <C-Y>
 map <ScrollWheelDown> <C-E>
 
 "exit insert mode easily
-inoremap ;l <esc>
-inoremap ;n <esc>
+inoremap hn <esc>
 
 "exit visual mode easily too
 vnoremap hn <Esc>
-vnoremap le <Esc>
 
 "Make basic movements work better with wrapped lines
 nnoremap n gj
@@ -126,7 +122,7 @@ cnoremap <C-p> <Up>
 cnoremap <C-j> <Down>
 cnoremap <C-n> <Down>
 cnoremap <C-h> <Left>
-cnoremap <C-l> <Right>
+cnoremap <C-i> <Right>
 cnoremap <M-b> <S-Left>
 cnoremap <M-f> <S-Right>
 
@@ -162,7 +158,7 @@ nnoremap <Leader>r :! stg refresh
 "splits navigation
 nnoremap <C-j> <C-w><C-j>
 nnoremap <C-k> <C-w><C-k>
-nnoremap <C-l> <C-w><C-l>
+nnoremap <C-i> <C-w><C-l>
 nnoremap <C-h> <C-w><C-h>
 
 "List contents of all registers (that typically contain pasteable text).
@@ -178,7 +174,7 @@ command W w
 command Q q
 
 nnoremap H gT
-nnoremap L gt
+nnoremap I gt
 nnoremap <C-q><e> :tabr<CR>
 nnoremap <C-q><n> :tabl<CR>
 nnoremap <C-q><h> :tabp<CR>
@@ -274,6 +270,7 @@ filetype plugin indent on
 call plug#begin('~/.vim/plugged')
   "Color scheme
   Plug 'tomasr/molokai', { 'dir': '~/.vim/colors/molokai'}
+  Plug 'ayu-theme/ayu-vim', { 'dir': '~/.vim/colors/ayu'}
   "commenting
   Plug 'scrooloose/nerdcommenter'
   "Tree explorer
@@ -323,7 +320,13 @@ let NERDTreeAutoDeleteBuffer = 1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 "colorscheme
+set termguicolors     " enable true colors support
 colorscheme molokai
+
+"let ayucolor="light"  " for light version of theme
+"let ayucolor="mirage" " for mirage version of theme
+"let ayucolor="dark"   " for dark version of theme
+"colorscheme ayu
 
 "Invisible character colors
 highlight NonText guifg=#999580
