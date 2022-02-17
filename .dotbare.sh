@@ -1,7 +1,7 @@
-DOTPATH=${DOTPATH:=".config"}
+DOTPATH=${DOTPATH:=".dotconfig"}
 
 function requires {
-  command -v $@ >/dev/null 2>&1 || { echo >&2 "I require \'$@\' but it's not installed. Aborting."; exit 1; }
+  command -v $@ >/dev/null 2>&1 || { echo >&2 "I require '$@' but it's not installed. Aborting."; exit 1; }
 }
 
 requires git
@@ -31,7 +31,6 @@ else
   repo="git@github.com:agotsis/dotfiles.git"
 fi
 
-git clone -b $branch_name --bare $repo $HOME/$DOTPATH
 function config {
   /usr/bin/git --git-dir=$HOME/$DOTPATH/ --work-tree=$HOME $@
 }
@@ -43,6 +42,8 @@ else
   echo "Backing up pre-existing dot files."
   config checkout $1 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} $HOME/.config-backup/{}
 fi
+
+git clone -b $branch_name --bare $repo $HOME/$DOTPATH || exit 1
 
 config config status.showUntrackedFiles no
 
@@ -60,6 +61,8 @@ mkdir $HOME/.vim/tmp
 # install plugins
 vim +'PlugInstall --sync' +qa
 
+echo "export DOTPATH=\"$DOTPATH\"" >> ~/.environlcl
+
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 mv $HOME/.zshrc.pre-oh-my-zsh $HOME/.zshrc
 
@@ -68,4 +71,3 @@ mv $HOME/.zshrc.pre-oh-my-zsh $HOME/.zshrc
 config update-index --assume-unchanged .gitconfig
 
 echo "Please update .gitconfig with the correct values."
-
