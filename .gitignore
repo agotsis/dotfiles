@@ -17,7 +17,15 @@ scons/build
 scons/lib/isconslib/platforms/linux.py
 ncscope.in.out
 ncscope.po.out
+test-vpx.cfg
 
 .vscode
 .vscode-ctags
 .vscode-ctags.next
+
+.bazelignore
+.bazelrc
+BUILD.bazel
+WORKSPACE.bazel
+bazel-*
+dbgInfoCache

@@ -10,7 +10,12 @@ set mbox_type=Maildir
 
 # IMAP config
 set imap_user="$my_username@$my_domain"
-set imap_pass=$my_password
+#set imap_pass=$my_password
+
+set imap_authenticators="xoauth2"
+set imap_oauth_refresh_command="/home/MYLOGIN/.mutt/mutt_oauth2.py -t > .mutt/token"
+set smtp_authenticators=${imap_authenticators}
+set smtp_oauth_refresh_command=${imap_oauth_refresh_command}
 
 set folder="imaps://outlook.office365.com/"
 set spoolfile= +INBOX
@@ -46,7 +51,7 @@ set smtp_authenticators = "login"
 
 set signature="~/.mutt/signature"
 set message_cachedir="~/.mutt/cache"
-set header_cache="~/.mutt/header_cache"
+#set header_cache="~/.mutt/header_cache"
 set tmpdir="~/.mutt/tmp"
 
 # Mail content settings

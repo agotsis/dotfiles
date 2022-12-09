@@ -6,7 +6,7 @@ set t_Co=256 "256 color
 set encoding=utf-8 "UTF-8 character encoding
 
 set number "Show line numbers
-set relativenumber "Show relative line numbers too
+"set relativenumber "Show relative line numbers too
 set cursorline "Highlight current line
 set textwidth=80 "Highlight after this many characters
 set colorcolumn=80
@@ -45,7 +45,7 @@ set scrolloff=5  "Never scroll off
 set wildmode=longest,list  "Better unix-like tab completion
 set clipboard=unnamed  "Copy and paste from system clipboard
 set lazyredraw  "Don't redraw while running macros (faster)
-set wrap  "Visually wrap lines
+"set wrap  "Visually wrap lines
 set breakindent
 set breakindentopt=sbr
 set showbreak=↪
@@ -266,11 +266,14 @@ endif
 syntax on
 filetype plugin indent on
 
+"For constant mispellings
+iab availible available
+
 "VimPlug plugin manager - https://github.com/junegunn/vim-plug
 call plug#begin('~/.vim/plugged')
   "Color scheme
   Plug 'tomasr/molokai', { 'dir': '~/.vim/colors/molokai'}
-  Plug 'ayu-theme/ayu-vim', { 'dir': '~/.vim/colors/ayu'}
+  "Plug 'ayu-theme/ayu-vim', { 'dir': '~/.vim/colors/ayu'}
   "commenting
   Plug 'scrooloose/nerdcommenter'
   "Tree explorer
@@ -278,7 +281,7 @@ call plug#begin('~/.vim/plugged')
   "alternate files with :A
   "Plug 'agotsis/a.vim'
   "git status in gutter
-  Plug 'airblade/vim-gitgutter'
+  "Plug 'airblade/vim-gitgutter'
   "git from vim
   "Plug 'tpope/vim-fugitive'
   "delimiter changing
@@ -293,11 +296,11 @@ call plug#begin('~/.vim/plugged')
   "SystemVerilog
   "Plug 'vhda/verilog_systemverilog.vim'
   "Automatic set paste
-  Plug 'conradirwin/vim-bracketed-paste'
+  "Plug 'conradirwin/vim-bracketed-paste'
   " vim-perforce integration
-  Plug 'nfvs/vim-perforce'
+  "Plug 'nfvs/vim-perforce'
   " cscope vim
-  Plug 'chazy/cscope_maps'
+  "Plug 'chazy/cscope_maps'
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   " fzf plugin
   Plug 'junegunn/fzf.vim'

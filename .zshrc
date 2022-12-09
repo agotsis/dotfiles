@@ -44,7 +44,7 @@ plugins=(
          gitfast
          wd
          fzf
-         #zsh-autosuggestions
+         zsh-autosuggestions
          #zsh-syntax-highlighting
         )
 
@@ -91,3 +91,5 @@ if type "direnv" > /dev/null; then
    eval "$(direnv hook zsh)"
 fi
 
+
+export PATH="$HOME/.poetry/bin:$PATH"
