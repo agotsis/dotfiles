@@ -63,7 +63,7 @@ vim +'PlugInstall --sync' +qa
 
 echo "export DOTPATH=\"$DOTPATH\"" >> ~/.environlcl
 
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --keep-zshrc --unattended
 mv $HOME/.zshrc.pre-oh-my-zsh $HOME/.zshrc
 
 # Use this when not installing mutt
