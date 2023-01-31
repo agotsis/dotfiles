@@ -295,7 +295,6 @@ call plug#begin('~/.vim/plugged')
   "Automatic set paste
   Plug 'conradirwin/vim-bracketed-paste'
   " vim-perforce integration
-  Plug 'nfvs/vim-perforce'
   " cscope vim
   Plug 'chazy/cscope_maps'
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
