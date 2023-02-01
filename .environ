@@ -1,3 +1,5 @@
+# This file is used for interactive shells
+
 export PAGER=less
 export EDITOR=vim
 
@@ -23,4 +25,3 @@ _fzf_compgen_dir() {
 
 # bat configuration
 export BAT_THEME="Monokai Extended"
-

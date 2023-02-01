@@ -50,15 +50,12 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-# version controlled environment variables
+# version controlled environment variables for login shells
 if [ -f $HOME/.environ ]; then
   source $HOME/.environ
 fi
 
-# local environment variables
-if [ -f $HOME/.environlcl ]; then
-  source $HOME/.environlcl
-fi
+# local environment variables should be in .zshenv
 
 # version controlled aliases
 if [ -f $HOME/.zshaliases ]; then
