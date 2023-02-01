@@ -13,8 +13,8 @@ set colorcolumn=80
 
 "Indent 3 spaces by default
 set tabstop=8  "8 space tabs for actual tabs
-set shiftwidth=3  "3 space shift
-set softtabstop=3  "Tab spaces in no hard tab mode
+set shiftwidth=4  "4 space shift
+set softtabstop=4  "Tab spaces in no hard tab mode
 set expandtab  "Expand tabs into spaces
 set autoindent  "autoindent on new lines
 
