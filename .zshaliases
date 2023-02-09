@@ -8,5 +8,6 @@ alias diff='diff -s'
 
 alias gpom="git push origin master"
 alias glom="git pull origin master"
+alias gfi="git fixup"
 
 alias le="less"

@@ -44,11 +44,10 @@ plugins=(
          gitfast
          wd
          fzf
+         pyenv
          #zsh-autosuggestions
          #zsh-syntax-highlighting
         )
-
-source $ZSH/oh-my-zsh.sh
 
 # version controlled environment variables for login shells
 if [ -f $HOME/.environ ]; then
@@ -88,3 +87,4 @@ if type "direnv" > /dev/null; then
    eval "$(direnv hook zsh)"
 fi
 
+source $ZSH/oh-my-zsh.sh
