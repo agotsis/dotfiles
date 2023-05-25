@@ -61,7 +61,7 @@ mkdir $HOME/.vim/tmp
 # install plugins
 vim +'PlugInstall --sync' +qa
 
-echo "export DOTPATH=\"$DOTPATH\"" >> ~/.environlcl
+echo "export DOTPATH=\"$DOTPATH\"" >> ~/.zshenv
 
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --keep-zshrc --unattended
 mv $HOME/.zshrc.pre-oh-my-zsh $HOME/.zshrc
