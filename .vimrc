@@ -34,8 +34,6 @@ set listchars=tab:▸\ ,eol:⏎
 set wildignore+=*.o,*.obj,*.class,*.swp,*.pyc "Ignore junk files
 set title  "Set window title to file
 set hlsearch  "Highlight on search
-set title  "Set window title to file
-set hlsearch  "Highlight on search
 set ignorecase  "Search ignoring case
 set smartcase  "Search using smartcasexr: - case sensitive when use capital letters
 set incsearch  "Start searching immediately
@@ -51,7 +49,6 @@ set breakindentopt=sbr
 set showbreak=↪
 set linebreak  "Only wrap on 'good' characters for wrapping
 set backspace=indent,eol,start  "Better backspacing
-set linebreak  "Intelligently wrap long files
 set ttyfast  "Speed up vim
 set nostartofline "Vertical movement preserves horizontal position
 set virtualedit=block "allow virtual block editing
@@ -249,8 +246,6 @@ augroup perfile_local
   autocmd FileType mail %s/^> $//eg | call setpos('.', getpos("''"))
   autocmd FileType mail %s/> >/>>/eg | call setpos('.', getpos("''"))
 
-  "turn on tabs for perforce
-  autocmd FileType perforce setlocal spell ts=8 sw=8 sts=0 noexpandtab list colorcolumn=72
 augroup END
 
 nnoremap <F7> :setlocal spell ts=8 sw=8 sts=0 noexpandtab list colorcolumn=72<CR>
@@ -331,4 +326,5 @@ colorscheme molokai
 highlight NonText guifg=#999580
 highlight SpecialKey guifg=#999580
 
+set formatoptions+=croqt  "Enable comment line auto formatting
 " vim: softtabstop=2 shiftwidth=2 expandtab

@@ -7,3 +7,4 @@ if [ -f $HOME/.iterm2_shell_integration.bash ]; then
 fi
 
 . "$HOME/.cargo/env"
+. "$HOME/.local/bin/env"

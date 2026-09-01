@@ -46,7 +46,9 @@ plugins=(
          fzf
          pyenv
          #zsh-autosuggestions
+         zsh-autocomplete
          #zsh-syntax-highlighting
+         pyenv
         )
 
 # version controlled environment variables for login shells
@@ -87,4 +89,4 @@ if type "direnv" > /dev/null; then
    eval "$(direnv hook zsh)"
 fi
 
-source $ZSH/oh-my-zsh.sh
+. "$HOME/.local/bin/env"

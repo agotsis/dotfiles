@@ -1,7 +1,6 @@
 alias cd='cd -P'
 
 alias v="vim"
-alias nm="neomutt"
 alias rmi="rm -i"
 
 alias diff='diff -s'
